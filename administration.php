@@ -42,9 +42,9 @@ $agents = $req->fetchAll();
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="agents.php">
                             <span data-feather="users"></span>
-                            Utilisateurs
+                            Agents
                         </a>
                     </li>
                     <li class="nav-item">
@@ -66,9 +66,9 @@ $agents = $req->fetchAll();
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Utilisateurs</h5>
-                            <p class="card-text">Gérez les utilisateurs de votre application.</p>
-                            <a href="#" class="btn btn-primary">Accéder</a>
+                            <h5 class="card-title">Agents</h5>
+                            <p class="card-text">Gérez les agents de l'application.</p>
+                            <a href="agents.php" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>
@@ -86,34 +86,7 @@ $agents = $req->fetchAll();
     </div>
 </div>
 
-<!--  -->
-<div class="container">
-    <table class="table table-striped mt-5">
-        <thead>
-        <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Date de naissance</th>
-            <th scope="col">Code d'identification</th>
-            <th scope="col">Nationalité</th>
-            <th scope="col">Spécialité</th>
-        </tr>
-        </thead>
-        <tbody>
 
-        <?php foreach ($agents as $agent) { ?>
-            <tr>
-                <td><?php echo $agent->nom; ?></a></td>
-                <td><?php echo $agent->prenom; ?></td>
-                <td><?php echo $agent->date_naissance; ?></td>
-                <td><?php echo $agent->code_identification; ?></td>
-                <td><?php echo $agent->nationalite; ?></td>
-                <td><?php echo $agent->specialite_id; ?></td>
-            </tr>
-        <?php } ?>
-        </tbody>
-    </table>
-</div>
 
 </body>
 
