@@ -109,7 +109,7 @@ $agents = $req->fetchAll();
                 <td><?php echo $agent->date_naissance; ?></td>
                 <td><?php echo $agent->code_identification; ?></td>
                 <td><?php echo $agent->nationalite; ?></td>
-                <td><?php echo $agent->specialite; ?></td>
+                <td><?php echo $agent->specialite_id; ?></td>
             </tr>
         <?php } ?>
         </tbody>
