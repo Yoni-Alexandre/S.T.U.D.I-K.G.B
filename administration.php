@@ -103,8 +103,7 @@ $agents = $req->fetchAll();
 
         <?php foreach ($agents as $agent) { ?>
             <tr>
-                <th scope="row"><a href="#" class="link-primary link-mission-studi-kgb"><?php echo $agent->nom; ?></a></th>
-
+                <td><?php echo $agent->nom; ?></a></td>
                 <td><?php echo $agent->prenom; ?></td>
                 <td><?php echo $agent->date_naissance; ?></td>
                 <td><?php echo $agent->code_identification; ?></td>
