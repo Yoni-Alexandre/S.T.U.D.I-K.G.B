@@ -36,21 +36,27 @@ $agents = $req->fetchAll();
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="agents.php">
                             <span data-feather="home"></span>
-                            Tableau de bord
+                            Agents
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="agents.php">
+                        <a class="nav-link" href="missions.php">
                             <span data-feather="users"></span>
-                            Agents
+                            Missions
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="settings"></span>
-                            Paramètres
+                            Nationalités
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="settings"></span>
+                            Spécialités
                         </a>
                     </li>
                 </ul>
@@ -75,9 +81,27 @@ $agents = $req->fetchAll();
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Paramètres</h5>
-                            <p class="card-text">Configurez les paramètres de votre application.</p>
+                            <h5 class="card-title">Nationalités</h5>
+                            <p class="card-text">Gérez les nationalités des agents .</p>
                             <a href="#" class="btn btn-primary">Accéder</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Spécialités</h5>
+                            <p class="card-text">Gérez les spécialités.</p>
+                            <a href="agents.php" class="btn btn-primary">Accéder</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Missions</h5>
+                            <p class="card-text">Configurez les paramètres de missions des agents.</p>
+                            <a href="missions.php" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>

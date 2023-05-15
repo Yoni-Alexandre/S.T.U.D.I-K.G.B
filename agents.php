@@ -18,7 +18,7 @@ $agents = $req->fetchAll();
         </div>
         <div class="col-3">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mt-4 mb-3 border-bottom">
-                <a href="#" class="btn btn-success"><i class="fas fa-plus-circle"></i>  Ajouter un agent</a>
+                <a href="agentFormType.php" class="btn btn-success"><i class="fas fa-plus-circle"></i>  Ajouter un agent</a>
             </div>
         </div>
     </div>
