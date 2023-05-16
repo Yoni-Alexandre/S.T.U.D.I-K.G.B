@@ -39,7 +39,7 @@ $nationalites = $req->fetchAll();
                             echo "<td>$nationalite->pays</td>";
                             echo "<td>
                                 <a href='nationaliteModifFormType.php?id=$nationalite->id' class='btn btn-primary'><i class='fas fa-pen'></i></a>
-                                <a href='#' class='btn btn-danger'><i class='fas fa-trash'></i></a>
+                                <a href='nationaliteSuppr.php?id=$nationalite->id' class='btn btn-danger'><i class='fas fa-trash'></i></a>
                                 </td>";
                         echo "</tr>";
                     }
