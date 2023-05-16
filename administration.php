@@ -30,7 +30,7 @@ $agents = $req->fetchAll();
 <!--    </div>-->
 <!--</nav>-->
 
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="row">
         <div class="col-lg-3 col-md-4 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
@@ -38,25 +38,26 @@ $agents = $req->fetchAll();
                     <li class="nav-item">
                         <a class="nav-link active" href="agents.php">
                             <span data-feather="home"></span>
-                            Agents
+                            <i class="fa fa-user-secret" aria-hidden="true"></i> Agents
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nationalites.php">
+                            <span data-feather="settings"></span>
+                            <i class="fa fa-flag" aria-hidden="true"></i> Nationalités
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="specialites.php">
+                            <span data-feather="settings"></span>
+                            <i class="fa fa-binoculars" aria-hidden="true"></i> Spécialités
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="missions.php">
                             <span data-feather="users"></span>
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
                             Missions
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="settings"></span>
-                            Nationalités
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="settings"></span>
-                            Spécialités
                         </a>
                     </li>
                 </ul>
@@ -82,8 +83,8 @@ $agents = $req->fetchAll();
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Nationalités</h5>
-                            <p class="card-text">Gérez les nationalités des agents .</p>
-                            <a href="#" class="btn btn-primary">Accéder</a>
+                            <p class="card-text">Gérez les nationalités des agents.</p>
+                            <a href="nationalites.php" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +93,7 @@ $agents = $req->fetchAll();
                         <div class="card-body">
                             <h5 class="card-title">Spécialités</h5>
                             <p class="card-text">Gérez les spécialités.</p>
-                            <a href="agents.php" class="btn btn-primary">Accéder</a>
+                            <a href="specialites.php" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>

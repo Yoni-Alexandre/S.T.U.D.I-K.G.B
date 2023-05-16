@@ -1,4 +1,19 @@
-<?php include_once 'header.php'; ?>
+<?php
+    global $pdo;
+    include_once 'header.php';
+    include_once 'connexionPdo.php';
+
+    $req = $pdo->prepare("SELECT * FROM nationalites");
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $req->execute();
+    $nationalites = $req->fetchAll();
+
+    $req = $pdo->prepare("SELECT * FROM specialites");
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $req->execute();
+    $specialites = $req->fetchAll();
+
+?>
 <div class="container">
     <!-- Formulaire d'ajout des agents -->
     <div class="row pt-3">
@@ -13,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="#" method="post">
+            <form action="valideAjoutAgent.php" method="post">
                 <div class="form-group">
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" id="nom" placeholder="Nom de l'agent" class="form-control mb-2">
@@ -30,13 +45,23 @@
                     <label for="code_identification">Code d'identification</label>
                     <input type="text" name="code_identification" id="code_identification" placeholder="Code d'identification de l'agent" class="form-control mb-2">
                 </div>
+
                 <div class="form-group">
                     <label for="nationalite">Nationalité</label>
-                    <input type="text" name="nationalite" id="nationalite" placeholder="Nationalité de l'agent" class="form-control mb-2">
+                    <select name="nationalite" id="nationalite" class="form-control mb-2">
+                        <?php foreach ($nationalites as $nationalite) { ?>
+                            <option value="<?php echo $nationalite->id; ?>"><?php echo $nationalite->pays; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="specialite">Spécialité</label>
-                    <input type="text" name="specialite" id="specialite" placeholder="Spécialité de l'agent" class="form-control mb-2">
+                    <select name="specialite" id="specialite" class="form-control mb-2">
+                        <?php foreach ($specialites as $specialite) { ?>
+                            <option value="<?php echo $specialite->id; ?>"><?php echo $specialite->nom; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="row">
