@@ -43,9 +43,31 @@ $agents = $req->fetchAll();
                         <td><?php echo $agent->prenom; ?></td>
                         <td><?php echo $agent->date_naissance; ?></td>
                         <td><?php echo $agent->code_identification; ?></td>
-                        <td><?php echo $agent->nationalite; ?></td>
-                        <td><?php echo $agent->specialite_id; ?></td>
+<!--                        <td>--><?php //echo $agent->nationalite_id; ?><!--</td>-->
+<!--                        <td>--><?php //echo $agent->specialite_id; ?><!--</td>-->
                         <td>
+                            <?php
+                            $nationalite_id = $agent->nationalite_id;
+                            $req = $pdo->prepare('SELECT pays FROM nationalites WHERE id = ?');
+                            $req->execute([$nationalite_id]);
+                            $nationalite = $req->fetch();
+                            echo $nationalite['pays'];
+                            ?>
+                        </td>
+
+                        <td>
+                            <?php
+                            $specialite_id = isset($agent->specialite_id) ? $agent->specialite_id : null;
+                            if ($specialite_id) {
+                                $req = $pdo->prepare('SELECT nom FROM specialites WHERE id = ?');
+                                $req->execute([$specialite_id]);
+                                $agent = $req->fetch();
+                                echo $agent['nom'];
+                            }
+                            ?>
+                        </td>
+                        <td>
+
                             <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i></a>
                             <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </td>
@@ -58,9 +80,5 @@ $agents = $req->fetchAll();
     </div>
 </div>
 </body>
-
-
-
-
 
 <?php include_once 'footer.php'; ?>

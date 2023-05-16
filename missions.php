@@ -56,10 +56,43 @@ $missions = $req->fetchAll();
                         <td><?php echo $mission->specialite_requise; ?></td>
                         <td><?php echo $mission->date_debut; ?></td>
                         <td><?php echo $mission->date_fin; ?></td>
-                        <td><?php echo $mission->agent_id; ?></td>
-                        <td><?php echo $mission->contact_id; ?></td>
-                        <td><?php echo $mission->cible_id; ?></td>
-                        <td><?php echo $mission->planque_id; ?></td>
+
+                        <td>
+                            <?php
+                            $agent_id = $mission->agent_id;
+                            $req = $pdo->prepare('SELECT nom FROM agents WHERE id = ?');
+                            $req->execute([$agent_id]);
+                            $agent = $req->fetch();
+                            echo $agent['nom'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            $contact_id = $mission->contact_id;
+                            $req = $pdo->prepare('SELECT nom FROM contacts WHERE id = ?');
+                            $req->execute([$contact_id]);
+                            $contact = $req->fetch();
+                            echo $contact['nom'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            $cible_id = $mission->cible_id;
+                            $req = $pdo->prepare('SELECT nom FROM cibles WHERE id = ?');
+                            $req->execute([$cible_id]);
+                            $cible = $req->fetch();
+                            echo $cible['nom'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            $planque_id = $mission->planque_id;
+                            $req = $pdo->prepare('SELECT code FROM planques WHERE id = ?');
+                            $req->execute([$planque_id]);
+                            $planque = $req->fetch();
+                            echo $planque['code'];
+                            ?>
+                        </td>
 
                         <td>
                             <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i></a>
