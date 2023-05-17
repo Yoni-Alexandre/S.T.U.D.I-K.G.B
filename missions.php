@@ -95,8 +95,8 @@ $missions = $req->fetchAll();
                         </td>
 
                         <td>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i></a>
-                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#nationaliteSupprModal' data-suppression=''><i class='fas fa-trash'></i></a>
+                            <a href="missionModifFormType.php?id=<?php echo $mission->id ?>" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+                            <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#missionSupprModal" data-suppression="missionModifFormType.php?id=<?php echo $mission->id ?>"><i class="fas fa-trash"></i></a>
                         </td>
 
                     </tr>
@@ -108,7 +108,7 @@ $missions = $req->fetchAll();
 </div>
 
 <!-- Modal de confirmation de suppression -->
-<div class="modal fade" id="nationaliteSupprModal" tabindex="-1" aria-labelledby="nationaliteSupprModalLabel" aria-hidden="true">
+<div class="modal fade" id="missionSupprModal" tabindex="-1" aria-labelledby="missionSupprModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -116,7 +116,7 @@ $missions = $req->fetchAll();
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p class="text-center">Voulez-vous vraiment supprimer cette nationalité ?</p>
+                <p class="text-center">Voulez-vous vraiment supprimer cette mission ?</p>
             </div>
             <div class="modal-footer">
                 <!--                Le href sera rempli par le script JS-->
@@ -127,18 +127,18 @@ $missions = $req->fetchAll();
     </div>
 </div>
 
-<script src="assets/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
     // Script pour la modale de confirmation de suppression
-    let nationaliteSupprModal = document.getElementById('nationaliteSupprModal')
-    nationaliteSupprModal.addEventListener('show.bs.modal', function (event) {
+    let missionSupprModal = document.getElementById('missionSupprModal')
+    missionSupprModal.addEventListener('show.bs.modal', function (event) {
         // Bouton de déclenchement de la modale
         let bouton = event.relatedTarget
         // Récupération des attributs data-bs-*
-        let nationaliteSuppr = bouton.getAttribute('data-suppression')
+        let missionSuppr = bouton.getAttribute('data-suppression')
         // Modification du contenu de la modale
-        let btnSuppr = nationaliteSupprModal.querySelector('#btnSuppr')
-        btnSuppr.setAttribute('href', nationaliteSuppr)
+        let btnSuppr = missionSupprModal.querySelector('#btnSuppr')
+        btnSuppr.setAttribute('href', missionSuppr)
     })
 
 <?php include_once 'footer.php'; ?>

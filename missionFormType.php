@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="#" method="post">
+            <form action="valideAjoutMission.php" method="post">
                 <div class="form-group">
                     <label for="titre">Titre</label>
                     <input type="text" name="titre" id="titre" placeholder="Titre de la mission" class="form-control mb-2">
@@ -23,77 +23,102 @@
                     <input type="text" name="description" id="description" placeholder="Description de la mission" class="form-control mb-2">
                 </div>
                 <div class="form-group">
-                    <label for="nomDeCode">Nom de code</label>
-                    <input type="text" name="nomDeCode" id="nomDeCode" placeholder="Nom de code de la mission" class="form-control mb-2">
+                    <label for="nom_code">Nom de code</label>
+                    <input type="text" name="nom_code" id="nom_code" placeholder="Nom de code de la mission" class="form-control mb-2">
                 </div>
                 <div class="form-group">
                     <label for="pays">Pays</label>
                     <input type="text" name="pays" id="pays" placeholder="Pays de la mission" class="form-control mb-2">
                 </div>
                 <div class="form-group">
-                    <label for="typeMission">Type</label>
-                    <input type="text" name="typeMission" id="typeMission" placeholder="Type de la mission" class="form-control mb-2">
+                    <label for="type_mission">Type</label>
+                    <input type="text" name="type_mission" id="type_mission" placeholder="Type de la mission" class="form-control mb-2">
                 </div>
                 <div class="form-group">
                     <label for="statut">Statut</label>
                     <input type="text" name="statut" id="statut" placeholder="Statut de la mission" class="form-control mb-2">
                 </div>
                 <div class="form-group">
-                    <label for="specialiteRequise">Spécialité requise</label>
-                    <input type="text" name="specialiteRequise" id="specialiteRequise" placeholder="Spécialité requise de la mission" class="form-control mb-2">
+                    <label for="date_debut">Départ de la mission</label>
+                    <input type="date" name="date_debut" id="date_debut" placeholder="Départ de la mission" class="form-control mb-2">
                 </div>
                 <div class="form-group">
-                    <label for="dateDebut">Départ de la mission</label>
-                    <input type="date" name="dateDebut" id="dateDebut" placeholder="Départ de la mission" class="form-control mb-2">
-                </div>
-                <div class="form-group">
-                    <label for="dateFin">Fin de la mission</label>
-                    <input type="date" name="dateFin" id="dateFin" placeholder="Fin de la mission" class="form-control mb-2">
-                </div>
-                <div class="form-group">
-                    <label for="agent">Agent</label>
-                    <select name="agent" id="agent" class="form-control mb-2">
-                        <option value="">Sélectionnez un agent</option>
-                        <option value="agent1">Agent 1</option>
-                        <option value="agent2">Agent 2</option>
-                        <option value="agent3">Agent 3</option>
-                    </select>
+                    <label for="date_fin">Fin de la mission</label>
+                    <input type="date" name="date_fin" id="date_fin" placeholder="Fin de la mission" class="form-control mb-2">
                 </div>
 
-                <div class="form-group">
-                    <label for="contact">Contact</label>
-                    <select name="contact" id="contact" class="form-control mb-2">
-                        <option value="">Sélectionnez un contact</option>
-                        <option value="contact1">Contact 1</option>
-                        <option value="contact2">Contact 2</option>
-                        <option value="contact3">Contact 3</option>
-                    </select>
-                </div>
+                <?php
+                    global $pdo;
+                    include_once 'connexionPdo.php';
+                    $req = $pdo->prepare('SELECT * FROM agents');
+                    $req->execute();
+                    $agents = $req->fetchAll();
 
-                <div class="form-group">
-                    <label for="cible">Cible</label>
-                    <select name="cible" id="cible" class="form-control mb-2">
-                        <option value="">Sélectionnez une cible</option>
-                        <option value="cible1">Cible 1</option>
-                        <option value="cible2">Cible 2</option>
-                        <option value="cible3">Cible 3</option>
-                    </select>
-                </div>
+                    $req = $pdo->prepare('SELECT * FROM contacts');
+                    $req->execute();
+                    $contacts = $req->fetchAll();
 
-                <div class="form-group">
-                    <label for="planque">Planque</label>
-                    <select name="planque" id="planque" class="form-control mb-2">
-                        <option value="">Sélectionnez une planque</option>
-                        <option value="planque1">Planque 1</option>
-                        <option value="planque2">Planque 2</option>
-                        <option value="planque3">Planque 3</option>
-                    </select>
-                </div>
+                    $req = $pdo->prepare('SELECT * FROM specialites');
+                    $req->execute();
+                    $specialites = $req->fetchAll();
 
+                    $req = $pdo->prepare('SELECT * FROM planques');
+                    $req->execute();
+                    $planques = $req->fetchAll();
+
+                    echo '<div class="form-group">';
+                    echo '<label for="agent_id">Agent</label>';
+                    echo '<select name="agent_id" id="agent_id" class="form-control mb-2">';
+                    echo '<option value="">Sélectionnez un agent</option>';
+                    foreach ($agents as $agent) {
+                        echo '<option value="' . $agent['id'] . '">' . $agent['nom'] . ' ' . $agent['prenom'] . '</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>';
+
+                    echo '<div class="form-group">';
+                    echo '<label for="contact_id">Contact</label>';
+                    echo '<select name="contact_id" id="contact_id" class="form-control mb-2">';
+                    echo '<option value="">Sélectionnez un contact</option>';
+                    foreach ($contacts as $contact) {
+                        echo '<option value="' . $contact['id'] . '">' . $contact['nom'] . ' ' . $contact['prenom'] . '</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>';
+
+                    echo '<div class="form-group">';
+                    echo '<label for="specialite_requise">Spécialité</label>';
+                    echo '<select name="specialite_requise" id="specialite_requise" class="form-control mb-2">';
+                    echo '<option value="">Sélectionnez une spécialité</option>';
+                    foreach ($specialites as $specialite) {
+                        echo '<option value="' . $specialite['id'] . '">' . $specialite['nom'] . '</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>';
+
+                    echo '<div class="form-group">';
+                    echo '<label for="cible_id">Cible</label>';
+                    echo '<select name="cible_id" id="cible_id" class="form-control mb-2">';
+                    echo '<option value="">Sélectionnez une cible</option>';
+                    foreach ($contacts as $contact) {
+                        echo '<option value="' . $contact['id'] . '">' . $contact['nom'] . ' ' . $contact['prenom'] . '</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>';
+
+                    echo '<div class="form-group">';
+                    echo '<label for="planque_id">Planque</label>';
+                    echo '<select name="planque_id" id="planque_id" class="form-control mb-2">';
+                    echo '<option value="">Sélectionnez une planque</option>';
+                    foreach ($planques as $planque) {
+                        echo '<option value="' . $planque['id'] . '">' . $planque['code'] . '</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>';
+                ?>
                 <div class="row">
                     <button type="submit" class="btn btn-success mt-5">Ajouter un agent</button>
                 </div>
-
             </form>
         </div>
     </div>
