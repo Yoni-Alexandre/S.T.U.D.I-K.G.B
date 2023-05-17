@@ -60,6 +60,7 @@ $mission = $req->fetch();
                     <input type="text" name="statut" id="statut" placeholder="Modifier le statut" class="form-control mb-2" value="<?php echo $mission->statut; ?>">
                 </div>
 
+                <!--                MODIFIER POUR LISTE DEROULANTE BOUCLE PHP ET CHAMPS FK -->
                 <div class="form-group">
                     <label for="specialite_requise">Spécialité</label>
                     <input type="text" name="specialite_requise" id="specialite_requise" placeholder="Modifier la specialite" class="form-control mb-2" value="<?php echo $mission->statut; ?>">
@@ -75,21 +76,25 @@ $mission = $req->fetch();
                     <input type="text" name="date_fin" id="date_fin" placeholder="Modifier la date" class="form-control mb-2" value="<?php echo $mission->date_fin; ?>">
                 </div>
 
+                <!--                MODIFIER POUR LISTE DEROULANTE BOUCLE PHP ET CHAMPS FK -->
                 <div class="form-group">
                     <label for="agent_id">Agent</label>
                     <input type="text" name="agent_id" id="agent_id" placeholder="Modifier l'agent" class="form-control mb-2" value="<?php echo $mission->agent_id; ?>">
                 </div>
 
+                <!--                MODIFIER POUR LISTE DEROULANTE BOUCLE PHP ET CHAMPS FK -->
                 <div class="form-group">
                     <label for="contact_id">Contact</label>
                     <input type="text" name="contact_id" id="contact_id" placeholder="Modifier le contact" class="form-control mb-2" value="<?php echo $mission->contact_id; ?>">
                 </div>
 
+                <!--                MODIFIER POUR LISTE DEROULANTE BOUCLE PHP ET CHAMPS FK -->
                 <div class="form-group">
                     <label for="cible_id">Cible</label>
                     <input type="text" name="cible_id" id="cible_id" placeholder="Modifier la cible" class="form-control mb-2" value="<?php echo $mission->cible_id; ?>">
                 </div>
 
+                <!--                MODIFIER POUR LISTE DEROULANTE BOUCLE PHP ET CHAMPS FK -->
                 <div class="form-group">
                     <label for="planque_id">Planque</label>
                     <input type="text" name="planque_id" id="planque_id" placeholder="Modifier la planque" class="form-control mb-2" value="<?php echo $mission->planque_id; ?>">

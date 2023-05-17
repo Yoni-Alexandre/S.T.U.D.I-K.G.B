@@ -38,9 +38,9 @@ $req->execute();
 <div class="mt-5 container">
     <?php
     if ($req->rowCount() == 1) {
-        echo '<div class="alert alert-success" role="alert">La mission a bien été ajoutée</div>';
+        echo '<div class="alert alert-success" role="alert">La mission a bien été modifiée</div>';
     } else {
-        echo '<div class="alert alert-danger" role="alert">La mission n\'a pas été ajoutée</div>';
+        echo '<div class="alert alert-danger" role="alert">La mission n\'a pas été modifiée</div>';
     }
     ?>
     <a href="missions.php" class="btn btn-warning">Revenir à la liste</a>
