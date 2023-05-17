@@ -9,7 +9,7 @@ $req->execute();
 $agents = $req->fetchAll();
 ?>
 
-<body>
+
 <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
 <!--    <a class="navbar-brand" href="#">Console d'administration</a>-->
 <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
@@ -110,13 +110,6 @@ $agents = $req->fetchAll();
         </main>
     </div>
 </div>
-
-
-
-</body>
-
-
-
 
 <?php include_once 'footer.php'; ?>
 

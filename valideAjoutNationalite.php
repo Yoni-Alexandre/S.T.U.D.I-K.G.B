@@ -22,6 +22,6 @@ $req->execute();
         <a href="nationalites.php" class="btn btn-warning">Revenir à la liste</a>
 
     </div>
-</body>
+
 
 <?php include_once 'footer.php'; ?>

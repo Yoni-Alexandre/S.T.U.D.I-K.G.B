@@ -104,6 +104,6 @@ $missions = $req->fetchAll();
         </div>
     </div>
 </main>
-</body>
+
 
 <?php include_once 'footer.php'; ?>

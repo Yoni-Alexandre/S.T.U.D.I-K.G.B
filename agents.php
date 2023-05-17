@@ -1,5 +1,5 @@
 <?php
-global$pdo;
+global $pdo;
 include_once 'header.php';
 include_once 'connexionPdo.php';
 $req = $pdo->prepare('SELECT * FROM agents');
@@ -43,8 +43,6 @@ $agents = $req->fetchAll();
                         <td><?php echo $agent->prenom; ?></td>
                         <td><?php echo $agent->date_naissance; ?></td>
                         <td><?php echo $agent->code_identification; ?></td>
-<!--                        <td>--><?php //echo $agent->nationalite_id; ?><!--</td>-->
-<!--                        <td>--><?php //echo $agent->specialite_id; ?><!--</td>-->
                         <td>
                             <?php
                             $nationalite_id = $agent->nationalite_id;
@@ -57,7 +55,7 @@ $agents = $req->fetchAll();
 
                         <td>
                             <?php
-                            $specialite_id = isset($agent->specialite_id) ? $agent->specialite_id : null;
+                            $specialite_id = $agent->specialite_id ?? null;
                             if ($specialite_id) {
                                 $req = $pdo->prepare('SELECT nom FROM specialites WHERE id = ?');
                                 $req->execute([$specialite_id]);
@@ -67,11 +65,9 @@ $agents = $req->fetchAll();
                             ?>
                         </td>
                         <td>
-
-                            <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i></a>
-                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            <a href='agentModifFormType.php?id=<?php echo $agent->id ?>' class='btn btn-primary'><i class='fas fa-pen'></i></a>
+                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#agentSupprModal' data-suppression='agentSuppr.php?id=<?php echo $agent->id ?>'><i class='fas fa-trash'></i></a>
                         </td>
-
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -79,6 +75,40 @@ $agents = $req->fetchAll();
         </div>
     </div>
 </div>
-</body>
+
+
+<!-- Modal de confirmation de suppression -->
+<div class="modal fade" id="agentSupprModal" tabindex="-1" aria-labelledby="agentSupprModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">ATTENTION</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Voulez-vous vraiment supprimer cet agent ?</p>
+            </div>
+            <div class="modal-footer">
+                <!--                Le href sera rempli par le script JS-->
+                <a href="" class="btn btn-danger" id="btnSuppr">Supprimer</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    // Script pour la modale de confirmation de suppression
+    let nationaliteSupprModal = document.getElementById('nationaliteSupprModal')
+    nationaliteSupprModal.addEventListener('show.bs.modal', function (event) {
+        // Bouton de déclenchement de la modale
+        let bouton = event.relatedTarget
+        // Récupération des attributs data-bs-*
+        let nationaliteSuppr = bouton.getAttribute('data-suppression')
+        // Modification du contenu de la modale
+        let btnSuppr = nationaliteSupprModal.querySelector('#btnSuppr')
+        btnSuppr.setAttribute('href', nationaliteSuppr)
+    })
 
 <?php include_once 'footer.php'; ?>

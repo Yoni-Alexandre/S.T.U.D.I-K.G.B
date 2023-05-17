@@ -65,12 +65,12 @@ if (!$mission) {
                             $planque = $req->fetch();
                             echo $planque['code'] . '</p>';
                         }
-                    ?></p>
+                    ?>
                 </div>
             </div>
         </div>
     </div>
 </main>
-</body>
+
 
 <?php include_once 'footer.php'; ?>

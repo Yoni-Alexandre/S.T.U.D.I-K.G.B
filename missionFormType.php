@@ -1,4 +1,5 @@
 <?php include_once 'header.php'; ?>
+<body>
 <div class="container">
     <div class="row pt-3">
         <div class="col-12">
@@ -97,5 +98,5 @@
         </div>
     </div>
 </div>
-<?php //include_once 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>
 
