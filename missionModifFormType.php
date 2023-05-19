@@ -70,6 +70,8 @@ $mission = $req->fetch();
                     <input type="text" name="date_fin" id="date_fin" placeholder="Modifier la date" class="form-control mb-2" value="<?php echo $mission->date_fin; ?>">
                 </div>
 
+
+
                 <?php
                     global $pdo;
                     include_once 'connexionPdo.php';
