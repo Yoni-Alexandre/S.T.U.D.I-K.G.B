@@ -1,5 +1,5 @@
 <?php
-global$pdo;
+global $pdo;
 include_once 'header.php';
 include_once 'connexionPdo.php';
 $req = $pdo->prepare('SELECT * FROM missions');
@@ -28,26 +28,26 @@ $missions = $req->fetchAll();
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th scope="col">Titre</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Nom de code</th>
-                                    <th scope="col">Pays</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Statut</th>
-                                    <th scope="col">Date de début</th>
-                                    <th scope="col">Date de fin</th>
-                                    <th scope="col">Agent</th>
-                                    <th scope="col">Contact</th>
-                                    <th scope="col">Cible</th>
-                                    <th scope="col">Planque</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Nom de code</th>
+                                <th scope="col">Pays</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Statut</th>
+                                <th scope="col">Date de début</th>
+                                <th scope="col">Date de fin</th>
+                                <th scope="col">Agent</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Cible</th>
+                                <th scope="col">Planque</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($missions as $mission) { ?>
+                            <?php foreach ($missions as $mission) { ?>
                                 <tr>
                                     <th scope="row">
-                                        <a href="redirection.php?id=<?php echo $mission->id; ?>" class="link-primary link-mission-studi-kgb">
+                                        <a href="mission_detail.php?id=<?php echo $mission->id; ?>" class="link-primary link-mission-studi-kgb">
                                             <?php echo $mission->titre; ?>
                                         </a>
                                     </th>
@@ -95,7 +95,7 @@ $missions = $req->fetchAll();
                                         ?>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                            <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -104,6 +104,5 @@ $missions = $req->fetchAll();
         </div>
     </div>
 </main>
-
 
 <?php include_once 'footer.php'; ?>
