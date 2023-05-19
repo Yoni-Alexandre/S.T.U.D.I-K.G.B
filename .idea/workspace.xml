@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="890fc7a2-e875-496e-95fa-f317239e50d7" name="Changes" comment="- Ajout de la fonctionnalité pour visualiser sur la page d'accueil les détails des missions.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agentFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/agentFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agentModifFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/agentModifFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agents.php" beforeDir="false" afterPath="$PROJECT_DIR$/agents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missionModifFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/missionModifFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valideModifAgent.php" beforeDir="false" afterPath="$PROJECT_DIR$/valideModifAgent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valideModifMission.php" beforeDir="false" afterPath="$PROJECT_DIR$/valideModifMission.php" afterDir="false" />
-    </list>
+    <list default="true" id="890fc7a2-e875-496e-95fa-f317239e50d7" name="Changes" comment="- Finalisation de la fonctionnalité CRUD pour les agents." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +47,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684532390485</updated>
-      <workItem from="1684532398008" duration="4922000" />
+      <workItem from="1684532398008" duration="5225000" />
     </task>
     <task id="LOCAL-00001" summary="- Finalisation de la fonctionnalité CRUD pour les missions">
       <created>1684532718212</created>
@@ -78,16 +70,35 @@
       <option name="project" value="LOCAL" />
       <updated>1684533578236</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Finalisation de la fonctionnalité CRUD pour les agents.">
+      <created>1684537654449</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684537654449</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="- Finalisation de la fonctionnalité CRUD pour les missions" />
     <MESSAGE value="- Ajout de la fonctionnalité pour visualiser sur la page d'accueil les détails des missions." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Ajout de la fonctionnalité pour visualiser sur la page d'accueil les détails des missions." />
+    <MESSAGE value="- Finalisation de la fonctionnalité CRUD pour les agents." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Finalisation de la fonctionnalité CRUD pour les agents." />
   </component>
 </project>
