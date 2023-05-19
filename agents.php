@@ -2,6 +2,7 @@
 global $pdo;
 include_once 'header.php';
 include_once 'connexionPdo.php';
+
 $req = $pdo->prepare('SELECT * FROM agents');
 $req->setFetchMode(PDO::FETCH_OBJ);
 $req->execute();
@@ -49,18 +50,21 @@ $agents = $req->fetchAll();
                             $req = $pdo->prepare('SELECT pays FROM nationalites WHERE id = ?');
                             $req->execute([$nationalite_id]);
                             $nationalite = $req->fetch();
-                            echo $nationalite['pays'];
+                            if ($nationalite) {
+                                echo $nationalite['pays'];
+                            }
                             ?>
                         </td>
-
                         <td>
                             <?php
                             $specialite_id = $agent->specialite_id ?? null;
                             if ($specialite_id) {
                                 $req = $pdo->prepare('SELECT nom FROM specialites WHERE id = ?');
                                 $req->execute([$specialite_id]);
-                                $agent = $req->fetch();
-                                echo $agent['nom'];
+                                $specialite = $req->fetch();
+                                if ($specialite) {
+                                    echo $specialite['nom'];
+                                }
                             }
                             ?>
                         </td>
@@ -76,7 +80,6 @@ $agents = $req->fetchAll();
     </div>
 </div>
 
-
 <!-- Modal de confirmation de suppression -->
 <div class="modal fade" id="agentSupprModal" tabindex="-1" aria-labelledby="agentSupprModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -89,7 +92,7 @@ $agents = $req->fetchAll();
                 <p class="text-center">Voulez-vous vraiment supprimer cet agent ?</p>
             </div>
             <div class="modal-footer">
-                <!--                Le href sera rempli par le script JS-->
+                <!-- Le href sera rempli par le script JS -->
                 <a href="" class="btn btn-danger" id="btnSuppr">Supprimer</a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
             </div>
@@ -97,18 +100,18 @@ $agents = $req->fetchAll();
     </div>
 </div>
 
-<script src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     // Script pour la modale de confirmation de suppression
-    let nationaliteSupprModal = document.getElementById('nationaliteSupprModal')
-    nationaliteSupprModal.addEventListener('show.bs.modal', function (event) {
+    let agentSupprModal = document.getElementById('agentSupprModal');
+    agentSupprModal.addEventListener('show.bs.modal', function (event) {
         // Bouton de déclenchement de la modale
-        let bouton = event.relatedTarget
+        let bouton = event.relatedTarget;
         // Récupération des attributs data-bs-*
-        let nationaliteSuppr = bouton.getAttribute('data-suppression')
+        let agentSuppr = bouton.getAttribute('data-suppression');
         // Modification du contenu de la modale
-        let btnSuppr = nationaliteSupprModal.querySelector('#btnSuppr')
-        btnSuppr.setAttribute('href', nationaliteSuppr)
-    })
+        let btnSuppr = agentSupprModal.querySelector('#btnSuppr');
+        btnSuppr.setAttribute('href', agentSuppr);
+    });
+</script>
 
 <?php include_once 'footer.php'; ?>

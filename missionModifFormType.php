@@ -62,12 +62,12 @@ $mission = $req->fetch();
 
                 <div class="form-group">
                     <label for="date_debut">Date de début</label>
-                    <input type="text" name="date_debut" id="date_debut" placeholder="Modifier la date" class="form-control mb-2" value="<?php echo $mission->date_debut; ?>">
+                    <input type="date" name="date_debut" id="date_debut" placeholder="Modifier la date" class="form-control mb-2" value="<?php echo $mission->date_debut; ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="date_fin">Date de fin</label>
-                    <input type="text" name="date_fin" id="date_fin" placeholder="Modifier la date" class="form-control mb-2" value="<?php echo $mission->date_fin; ?>">
+                    <input type="date" name="date_fin" id="date_fin" placeholder="Modifier la date" class="form-control mb-2" value="<?php echo $mission->date_fin; ?>">
                 </div>
 
 

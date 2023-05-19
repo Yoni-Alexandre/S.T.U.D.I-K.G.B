@@ -1,18 +1,5 @@
 <?php
-    global $pdo;
     include_once 'header.php';
-    include_once 'connexionPdo.php';
-
-    $req = $pdo->prepare("SELECT * FROM nationalites");
-    $req->setFetchMode(PDO::FETCH_OBJ);
-    $req->execute();
-    $nationalites = $req->fetchAll();
-
-    $req = $pdo->prepare("SELECT * FROM specialites");
-    $req->setFetchMode(PDO::FETCH_OBJ);
-    $req->execute();
-    $specialites = $req->fetchAll();
-
 ?>
 <body>
 <div class="container">
@@ -47,23 +34,39 @@
                     <input type="text" name="code_identification" id="code_identification" placeholder="Code d'identification de l'agent" class="form-control mb-2">
                 </div>
 
-                <div class="form-group">
-                    <label for="nationalite">Nationalité</label>
-                    <select name="nationalite" id="nationalite" class="form-control mb-2">
-                        <?php foreach ($nationalites as $nationalite) { ?>
-                            <option value="<?php echo $nationalite->id; ?>"><?php echo $nationalite->pays; ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
+                <?php
+                    global $pdo;
+                    include_once 'connexionPdo.php';
 
-                <div class="form-group">
-                    <label for="specialite">Spécialité</label>
-                    <select name="specialite" id="specialite" class="form-control mb-2">
-                        <?php foreach ($specialites as $specialite) { ?>
-                            <option value="<?php echo $specialite->id; ?>"><?php echo $specialite->nom; ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
+                    $req = $pdo->prepare('SELECT * FROM nationalites');
+                    $req->execute();
+                    $nationalites = $req->fetchAll();
+
+                    echo '<div class="form-group">';
+                    echo '<label for="nationalite_id">Nationalité</label>';
+                    echo '<select name="nationalite_id" id="nationalite_id" class="form-control mb-2">';
+                    echo '<option value="">Sélectionnez une nationalité</option>';
+                    foreach ($nationalites as $nationalite) {
+                        echo '<option value="' . $nationalite['id'] . '">' . $nationalite['pays'] . '</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>';
+
+                    $req = $pdo->prepare('SELECT * FROM specialites');
+                    $req->execute();
+                    $specialites = $req->fetchAll();
+
+                    echo '<div class="form-group">';
+                    echo '<label for="specialite_id">Spécialité</label>';
+                    echo '<select name="specialite_id" id="specialite_id" class="form-control mb-2">';
+                    echo '<option value="">Sélectionnez une spécialité</option>';
+                    foreach ($specialites as $specialite) {
+                        echo '<option value="' . $specialite['id'] . '">' . $specialite['nom'] . '</option>';
+                    }
+                    echo '</select>';
+                    echo '</div>';
+
+                ?>
 
                 <div class="row">
                     <button type="submit" class="btn btn-success mt-5">Ajouter un agent</button>

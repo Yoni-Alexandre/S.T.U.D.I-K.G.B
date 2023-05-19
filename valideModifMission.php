@@ -18,7 +18,6 @@ $contact_id = $_POST['contact_id'];
 $cible_id = $_POST['cible_id'];
 $planque_id = $_POST['planque_id'];
 
-//$req = $pdo->prepare('UPDATE missions SET titre = :titre, description = :description, nom_code = :nom_code, pays = :pays, type_mission = :type_mission, statut = :statut, specialite_requise = :specialite_requise, date_debut = :date_debut, date_fin = :date_fin, agent_id = :agent_id, contact_id = :contact_id, cible_id = :cible_id, planque_id = :planque_id');
 $req = $pdo->prepare('UPDATE missions SET titre = :titre, description = :description, nom_code = :nom_code, pays = :pays, type_mission = :type_mission, statut = :statut, specialite_requise = :specialite_requise, date_debut = :date_debut, date_fin = :date_fin, agent_id = :agent_id, contact_id = :contact_id, cible_id = :cible_id, planque_id = :planque_id WHERE id = :id');
 
 $req->bindParam(':id', $id);
@@ -38,7 +37,7 @@ $req->bindParam(':planque_id', $planque_id);
 $req->execute();
 ?>
 
-    <body>
+<body>
 <div class="mt-5 container">
     <?php
     if ($req->rowCount() == 1) {
