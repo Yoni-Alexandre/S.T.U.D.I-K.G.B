@@ -47,7 +47,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684532390485</updated>
-      <workItem from="1684532398008" duration="5225000" />
+      <workItem from="1684532398008" duration="5342000" />
     </task>
     <task id="LOCAL-00001" summary="- Finalisation de la fonctionnalité CRUD pour les missions">
       <created>1684532718212</created>
@@ -77,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684537654449</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Finalisation de la fonctionnalité CRUD pour les agents.">
+      <created>1684537692712</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684537692712</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
