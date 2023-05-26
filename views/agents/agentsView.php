@@ -14,7 +14,7 @@ include_once '../layout/header.php';
         </div>
         <div class="col-3">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mt-4 mb-3 border-bottom">
-                <a href="../../form/agentFormType.php" class="btn btn-success"><i class="fas fa-plus-circle"></i>  Ajouter un agent</a>
+                <a href="../../form/AgentForm/agentFormType.php" class="btn btn-success"><i class="fas fa-plus-circle"></i>  Ajouter un agent</a>
             </div>
         </div>
     </div>
@@ -64,8 +64,8 @@ include_once '../layout/header.php';
                             ?>
                         </td>
                         <td>
-                            <a href='agentModifFormType.php?id=<?php echo $agent->id ?>' class='btn btn-primary'><i class='fas fa-pen'></i></a>
-                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#agentSupprModal' data-suppression='agentSuppr.php?id=<?php echo $agent->id ?>'><i class='fas fa-trash'></i></a>
+                            <a href='../agents/agentsModifView.php?id=<?php echo $agent->id ?>' class='btn btn-primary'><i class='fas fa-pen'></i></a>
+                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#agentSupprModal' data-suppression='../agents/agentSupprView.php?id=<?php echo $agent->id ?>'><i class='fas fa-trash'></i></a>
                         </td>
                     </tr>
                 <?php } ?>

@@ -53,7 +53,6 @@ include_once '../views/layout/header.php';
 
                 <?php
                     global $pdo;
-//                    include_once 'connexionPdo.php';
 
                     $req = $pdo->prepare('SELECT * FROM agents');
                     $req->execute();
