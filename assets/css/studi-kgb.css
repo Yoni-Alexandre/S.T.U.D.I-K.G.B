@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* **** NAVBAR **** */
+.bg-studi-kgb {
+    background-color: #CD1E00;
+}
+
+.title-studi-kgb {
+    font-family: 'Montserrat', sans-serif;
+    color: #E8CA36;
+    letter-spacing: 0.2rem;
+}
+
+.title-studi-kgb {
+    font-family: 'Montserrat', sans-serif;
+    color: #E8CA36;
+}
+
+.title-studi-kgb:hover {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    color: #E8CA36;
+}
+
+.link-studi-kgb {
+    font-family: 'Montserrat', sans-serif;
+    color: #000562;
+}
+
+.link-mission-studi-kgb {
+    text-decoration: none;
+    color: #000562;
+}
+
+/* **** MAIN **** */
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    background-color: #CD1E00;
+    color: #E8CA36;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    color: #000562;
+}
+
+h1::after {
+    content: " | КГБ";
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #F7F7F7;
+    padding: 10px;
+    text-align: center;
+  }
+
+footer p {
+    margin: 0;
+    color: #000562;
+}
+
+/* 404 */
+
+.error-container {
+     height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+ }
+
+.erreur-titre {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.erreur-message {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+
+
+
