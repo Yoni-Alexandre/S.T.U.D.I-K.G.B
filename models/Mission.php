@@ -31,6 +31,15 @@ class Mission
     }
 
     /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
+    /**
      * @return string
      */
     public function getTitre(): string
@@ -261,53 +270,62 @@ class Mission
         return $mission;
     }
 
-    public static function add(Mission $mission) : int
+    public static function add(Mission $mission): int
     {
         $req = \MonPdo::getInstance()->prepare("INSERT INTO missions (titre, description, nom_code, pays, type_mission, statut, specialite_requise, date_debut, date_fin, agent_id, contact_id, cible_id, planque_id) VALUES (:titre, :description, :nom_code, :pays, :type_mission, :statut, :specialite_requise, :date_debut, :date_fin, :agent_id, :contact_id, :cible_id, :planque_id)");
-        $req->bindParam(":titre", $mission->getTitre());
-        $req->bindParam(":description", $mission->getDescription());
-        $req->bindParam(":nom_code", $mission->getNomCode());
-        $req->bindParam(":pays", $mission->getPays());
-        $req->bindParam(":type_mission", $mission->getTypeMission());
-        $req->bindParam(":statut", $mission->getStatut());
-        $req->bindParam(":specialite_requise", $mission->getSpecialiteRequise());
-        $req->bindParam(":date_debut", $mission->getDateDebut());
-        $req->bindParam(":date_fin", $mission->getDateFin());
-        $req->bindParam(":agent_id", $mission->getAgentId());
-        $req->bindParam(":contact_id", $mission->getContactId());
-        $req->bindParam(":cible_id", $mission->getCibleId());
-        $req->bindParam(":planque_id", $mission->getPlanqueId());
+
+        $req->bindValue(':titre', $_POST['titre']);
+        $req->bindValue(':description', $_POST['description']);
+        $req->bindValue(':nom_code', $_POST['nom_code']);
+        $req->bindValue(':pays', $_POST['pays']);
+        $req->bindValue(':type_mission', $_POST['type_mission']);
+        $req->bindValue(':statut', $_POST['statut']);
+        $req->bindValue(':specialite_requise', $_POST['specialite_requise'], \PDO::PARAM_INT);
+        $req->bindValue(':date_debut', $_POST['date_debut']);
+        $req->bindValue(':date_fin', $_POST['date_fin']);
+        $req->bindValue(':agent_id', $_POST['agent_id'], \PDO::PARAM_INT);
+        $req->bindValue(':contact_id', $_POST['contact_id'], \PDO::PARAM_INT);
+        $req->bindValue(':cible_id', $_POST['cible_id'], \PDO::PARAM_INT);
+        $req->bindValue(':planque_id', $_POST['planque_id'], \PDO::PARAM_INT);
+
         $req->execute();
+
         $id = \MonPdo::getInstance()->lastInsertId();
+
         return $id;
     }
 
-    public static function update(Mission $mission) : int
+    public static function update(Mission $mission): int
     {
-        $req = \MonPdo::getInstance()->prepare("UPDATE missions SET titre = :titre, description = :description, nom_code = :nom_code, pays = :pays, type_mission = :type_mission, statut = :statut, specialite_requise = :specialite_requise, date_debut = :date_debut, date_fin = :date_fin, agent_id = :agent_id, contact_id = :contact_id, cible_id = :cible_id, planque_id = :planque_id WHERE id = :id");
-        $req->bindParam(":id", $mission->getId());
-        $req->bindParam(":titre", $mission->getTitre());
-        $req->bindParam(":description", $mission->getDescription());
-        $req->bindParam(":nom_code", $mission->getNomCode());
-        $req->bindParam(":pays", $mission->getPays());
-        $req->bindParam(":type_mission", $mission->getTypeMission());
-        $req->bindParam(":statut", $mission->getStatut());
-        $req->bindParam(":specialite_requise", $mission->getSpecialiteRequise());
-        $req->bindParam(":date_debut", $mission->getDateDebut());
-        $req->bindParam(":date_fin", $mission->getDateFin());
-        $req->bindParam(":agent_id", $mission->getAgentId());
-        $req->bindParam(":contact_id", $mission->getContactId());
-        $req->bindParam(":cible_id", $mission->getCibleId());
-        $req->bindParam(":planque_id", $mission->getPlanqueId());
-        $nb = $req->execute();
-        return $nb;
+$req = \MonPdo::getInstance()->prepare("UPDATE missions SET titre = :titre, description = :description, nom_code = :nom_code, pays = :pays, type_mission = :type_mission, statut = :statut, specialite_requise = :specialite_requise, date_debut = :date_debut, date_fin = :date_fin, agent_id = :agent_id, contact_id = :contact_id, cible_id = :cible_id, planque_id = :planque_id WHERE id = :id");
+
+        $req->bindValue(':titre', $_POST['titre']);
+        $req->bindValue(':description', $_POST['description']);
+        $req->bindValue(':nom_code', $_POST['nom_code']);
+        $req->bindValue(':pays', $_POST['pays']);
+        $req->bindValue(':type_mission', $_POST['type_mission']);
+        $req->bindValue(':statut', $_POST['statut']);
+        $req->bindValue(':specialite_requise', $_POST['specialite_requise'], \PDO::PARAM_INT);
+        $req->bindValue(':date_debut', $_POST['date_debut']);
+        $req->bindValue(':date_fin', $_POST['date_fin']);
+        $req->bindValue(':agent_id', $_POST['agent_id'], \PDO::PARAM_INT);
+        $req->bindValue(':contact_id', $_POST['contact_id'], \PDO::PARAM_INT);
+        $req->bindValue(':cible_id', $_POST['cible_id'], \PDO::PARAM_INT);
+        $req->bindValue(':planque_id', $_POST['planque_id'], \PDO::PARAM_INT);
+        $req->bindValue(':id', $_POST['id'], \PDO::PARAM_INT);
+
+        $req->execute();
+
+        $id = \MonPdo::getInstance()->lastInsertId();
+
+        return $id;
     }
 
-    public static function delete(Mission $mission) : int
+    public static function delete(): void
     {
+        $id = $_GET['id'];
         $req = \MonPdo::getInstance()->prepare("DELETE FROM missions WHERE id = :id");
-        $req->bindParam(":id", $mission->getId());
-        $nb = $req->execute();
-        return $nb;
+        $req->bindParam(':id', $id);
+        $req->execute();
     }
 }

@@ -54,8 +54,9 @@
                         <td><?php echo $mission->planque_id; ?></td>
 
                         <td>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-pen"></i></a>
-                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#nationaliteSupprModal' data-suppression=''><i class='fas fa-trash'></i></a>
+                            <a href="../index.php?uc=mission&action=update&id=<?php echo $mission->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                            <a href="../index.php?uc=mission&action=delete&id=<?php echo $mission->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+
                         </td>
 
                     </tr>
@@ -65,39 +66,4 @@
         </div>
     </div>
 </div>
-
-<!-- Modal de confirmation de suppression -->
-<div class="modal fade" id="nationaliteSupprModal" tabindex="-1" aria-labelledby="nationaliteSupprModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">ATTENTION</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-center">Voulez-vous vraiment supprimer cette nationalité ?</p>
-            </div>
-            <div class="modal-footer">
-                <!--                Le href sera rempli par le script JS-->
-                <a href="" class="btn btn-danger" id="btnSuppr">Supprimer</a>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-    // Script pour la modale de confirmation de suppression
-    let nationaliteSupprModal = document.getElementById('nationaliteSupprModal')
-    nationaliteSupprModal.addEventListener('show.bs.modal', function (event) {
-        // Bouton de déclenchement de la modale
-        let bouton = event.relatedTarget
-        // Récupération des attributs data-bs-*
-        let nationaliteSuppr = bouton.getAttribute('data-suppression')
-        // Modification du contenu de la modale
-        let btnSuppr = nationaliteSupprModal.querySelector('#btnSuppr')
-        btnSuppr.setAttribute('href', nationaliteSuppr)
-    })
-</script>
 
