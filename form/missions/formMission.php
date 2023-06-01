@@ -56,13 +56,12 @@
                 </div>
 
                 <?php
-
                     echo '<div class="form-group">';
                     echo '<label for="agent_id">Agent</label>';
                     echo '<select name="agent_id" id="agent_id" class="form-control mb-2">';
                     echo '<option value="">Sélectionnez un agent</option>';
                     foreach ($agents as $agent) {
-                        echo '<option value="' . $agent['id'] . '">' . $agent['nom'] . ' ' . $agent['prenom'] . '</option>';
+                        echo '<option value="' . $agent->id . '">' . $agent->nom . ' ' . $agent->prenom . '</option>';
                     }
                     echo '</select>';
                     echo '</div>';

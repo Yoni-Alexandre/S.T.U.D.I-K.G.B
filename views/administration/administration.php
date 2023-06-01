@@ -5,7 +5,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="agents.php">
+                        <a class="nav-link active" href="../../index.php?uc=agent&action=listeAgents">
                             <span data-feather="home"></span>
                             <i class="fa fa-user-secret" aria-hidden="true"></i> Agents
                         </a>
@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="missions.php">
+                        <a class="nav-link" href="../../index.php?uc=mission&action=listeMissions">
                             <span data-feather="users"></span>
                             <i class="fa fa-folder-open" aria-hidden="true"></i>
                             Missions
@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Agents</h5>
                             <p class="card-text">Gérez les agents de l'application.</p>
-                            <a href="agents.php" class="btn btn-primary">Accéder</a>
+                            <a href="../../index.php?uc=agent&action=listeAgents" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Missions</h5>
                             <p class="card-text">Configurez les paramètres de missions des agents.</p>
-                            <a href="missions.php" class="btn btn-primary">Accéder</a>
+                            <a href="../../index.php?uc=mission&action=listeMissions" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>

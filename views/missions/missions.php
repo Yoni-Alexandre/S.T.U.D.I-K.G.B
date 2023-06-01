@@ -9,7 +9,7 @@
         </div>
         <div class="col-3">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mt-4 mb-3 border-bottom">
-                <a href="../index.php?uc=mission&action=add" class="btn btn-success"><i class="fas fa-plus-circle"></i>  Ajouter une mission</a>
+                <a href="../../index.php?uc=mission&action=add" class="btn btn-success"><i class="fas fa-plus-circle"></i>  Ajouter une mission</a>
             </div>
         </div>
     </div>
@@ -54,8 +54,8 @@
                         <td><?php echo $mission->planque_id; ?></td>
 
                         <td>
-                            <a href="../index.php?uc=mission&action=update&id=<?php echo $mission->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                            <a href="../index.php?uc=mission&action=delete&id=<?php echo $mission->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a href="../../index.php?uc=mission&action=update&id=<?php echo $mission->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                            <a href="../../index.php?uc=mission&action=delete&id=<?php echo $mission->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
 
                         </td>
 

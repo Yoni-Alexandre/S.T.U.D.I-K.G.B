@@ -52,9 +52,6 @@
                     <label for="date_fin">Date de fin</label>
                     <input type="date" name="date_fin" id="date_fin" placeholder="Modifier la date" class="form-control mb-2" value="<?php echo $mission->date_fin; ?>">
                 </div>
-
-
-
                 <?php
 
                 echo '<div class="form-group">';
@@ -62,7 +59,7 @@
                 echo '<select name="agent_id" id="agent_id" class="form-control mb-2">';
                 echo '<option value="">Sélectionnez un agent</option>';
                 foreach ($agents as $agent) {
-                    echo '<option value="' . $agent['id'] . '">' . $agent['nom'] . ' ' . $agent['prenom'] . '</option>';
+                    echo '<option value="' . $agent->id . '">' . $agent->nom . ' ' . $agent->prenom . '</option>';
                 }
                 echo '</select>';
                 echo '</div>';

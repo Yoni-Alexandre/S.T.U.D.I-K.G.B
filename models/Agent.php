@@ -120,57 +120,64 @@ class Agent
 
     public static function findAll()
     {
-        $pdo = \MonPdo::getInstance();
-        $req = "SELECT * FROM agents";
-        $stmt = $pdo->prepare($req);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        $req = \MonPdo::getInstance()->prepare("SELECT * FROM agents");
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        $req->execute();
+        $agents = $req->fetchAll();
+        return $agents;
     }
 
-    public static function findById($id)
+    public static function findById(int $id) : Agent
     {
-        $pdo = \MonPdo::getInstance();
-        $req = "SELECT * FROM agents WHERE id = :id";
-        $stmt = $pdo->prepare($req);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        return $stmt->fetch();
+        $req = \MonPdo::getInstance()->prepare("SELECT * FROM agents WHERE id = :id");
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Agent::class);
+        $req->bindParam(":id", $id);
+        $req->execute();
+        $agent = $req->fetch();
+        return $agent;
     }
-    public static function add(Agent $agent)
+    public static function add(Agent $agent): int
     {
-        $pdo = \MonPdo::getInstance();
-        $req = "INSERT INTO agents (nom, prenom, date_naissance, code_identification, nationalite_id, specialite_id) VALUES (:nom, :prenom, :date_naissance, :code_identification, :nationalite_id, :specialite_id)";
-        $stmt = $pdo->prepare($req);
-        $stmt->bindParam(':nom', $agent->getNom());
-        $stmt->bindParam(':prenom', $agent->getPrenom());
-        $stmt->bindParam(':date_naissance', $agent->getDateNaissance());
-        $stmt->bindParam(':code_identification', $agent->getCodeIdentification());
-        $stmt->bindParam(':nationalite_id', $agent->getNationaliteId());
-        $stmt->bindParam(':specialite_id', $agent->getSpecialiteId());
-        $stmt->execute();
-        return $pdo->lastInsertId();
-    }
-    public static function update(Agent $agent)
-    {
-        $pdo = \MonPdo::getInstance();
-        $req = "UPDATE agents SET nom = :nom, prenom = :prenom, date_naissance = :date_naissance, code_identification = :code_identification, nationalite_id = :nationalite_id, specialite_id = :specialite_id WHERE id = :id";
-        $stmt = $pdo->prepare($req);
-        $stmt->bindParam(':id', $agent->getId());
-        $stmt->bindParam(':nom', $agent->getNom());
-        $stmt->bindParam(':prenom', $agent->getPrenom());
-        $stmt->bindParam(':date_naissance', $agent->getDateNaissance());
-        $stmt->bindParam(':code_identification', $agent->getCodeIdentification());
-        $stmt->bindParam(':nationalite_id', $agent->getNationaliteId());
-        $stmt->bindParam(':specialite_id', $agent->getSpecialiteId());
-        $stmt->execute();
+        $req = \MonPdo::getInstance()->prepare("INSERT INTO agents (nom, prenom, date_naissance, code_identification, nationalite_id, specialite_id) VALUES (:nom, :prenom, :date_naissance, :code_identification, :nationalite_id, :specialite_id)");
+
+        $req->bindValue(':nom', $_POST['nom']);
+        $req->bindValue(':prenom', $_POST['prenom']);
+        $req->bindValue(':date_naissance', $_POST['date_naissance']);
+        $req->bindValue(':code_identification', $_POST['code_identification']);
+        $req->bindValue(':nationalite_id', $_POST['nationalite_id'], \PDO::PARAM_INT);
+        $req->bindValue(':specialite_id', $_POST['specialite_id'], \PDO::PARAM_INT);
+
+        $req->execute();
+
+        $id = \MonPdo::getInstance()->lastInsertId();
+
+        return $id;
     }
 
-    public static function delete($id)
+    public static function update(Agent $agent): int
     {
-        $pdo = \MonPdo::getInstance();
-        $req = "DELETE FROM agents WHERE id = :id";
-        $stmt = $pdo->prepare($req);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
+        $req = \MonPdo::getInstance()->prepare("UPDATE agents SET nom = :nom, prenom = :prenom, date_naissance = :date_naissance, code_identification = :code_identification, nationalite_id = :nationalite_id, specialite_id = :specialite_id WHERE id = :id");
+
+        $req->bindValue(':nom', $_POST['nom']);
+        $req->bindValue(':prenom', $_POST['prenom']);
+        $req->bindValue(':date_naissance', $_POST['date_naissance']);
+        $req->bindValue(':code_identification', $_POST['code_identification']);
+        $req->bindValue(':nationalite_id', $_POST['nationalite_id'], \PDO::PARAM_INT);
+        $req->bindValue(':specialite_id', $_POST['specialite_id'], \PDO::PARAM_INT);
+        $req->bindValue(':id', $_POST['id'], \PDO::PARAM_INT);
+
+        $req->execute();
+
+        $id = \MonPdo::getInstance()->lastInsertId();
+
+        return $id;
+    }
+
+    public static function delete(): void
+    {
+        $id = $_GET['id'];
+        $req = \MonPdo::getInstance()->prepare("DELETE FROM agents WHERE id = :id");
+        $req->bindParam(':id', $id);
+        $req->execute();
     }
 }

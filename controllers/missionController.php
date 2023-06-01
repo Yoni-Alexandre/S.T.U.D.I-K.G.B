@@ -2,7 +2,6 @@
 
 namespace controllers;
 
-
 use models\Agent;
 use models\Cible;
 use models\Contact;
@@ -13,9 +12,10 @@ use PDO;
 
 $action = $_GET['action'];
 switch ($action) {
+
     case 'listeMissions':
         $missions = Mission::findAll();
-        include('views/missions.php');
+        include('views/missions/missions.php');
         break;
 
     case 'add':
@@ -24,25 +24,13 @@ switch ($action) {
         $contacts = Contact::findAll();
         $cibles = Cible::findAll();
         $planques = Planque::findAll();
-        include('views/formMission.php');
+        include('form/missions/formMission.php');
         break;
 
     case 'valideForm':
         $mission = new Mission();
         $missionForm = Mission::add($mission);
-        include 'views/valideAjoutMission.php';
-        break;
-
-    case 'valideModif':
-        $mission = new Mission();
-        $missionForm = Mission::update($mission);
-        include 'views/valideModifMission.php';
-        break;
-
-    case 'delete':
-        $id = $_GET['id'];
-        $mission = Mission::delete($id);
-        include 'views/missionSuppr.php';
+        include 'views/missions/valideAjoutMission.php';
         break;
 
     case 'update':
@@ -58,10 +46,22 @@ switch ($action) {
         $cibles = Cible::findAll();
         $planques = Planque::findAll();
 
-        include 'views/formModifMission.php';
+        include 'form/missions/formModifMission.php';
+        break;
+
+    case 'valideModif':
+        $mission = new Mission();
+        $missionForm = Mission::update($mission);
+        include 'views/missions/valideModifMission.php';
+        break;
+
+    case 'delete':
+        $id = $_GET['id'];
+        $mission = Mission::delete($id);
+        include 'views/missions/missionSuppr.php';
         break;
 
     default:
-        echo "Action inconnue";
+        include 'views/404/404.php';
         break;
 }
