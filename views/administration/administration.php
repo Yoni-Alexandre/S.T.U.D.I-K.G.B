@@ -11,7 +11,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nationalites.php">
+                        <a class="nav-link" href="../../index.php?uc=nationalite&action=listeNationalites">
                             <span data-feather="settings"></span>
                             <i class="fa fa-flag" aria-hidden="true"></i> Nationalités
                         </a>
@@ -53,7 +53,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Nationalités</h5>
                             <p class="card-text">Gérez les nationalités des agents.</p>
-                            <a href="nationalites.php" class="btn btn-primary">Accéder</a>
+                            <a href="../../index.php?uc=nationalite&action=listeNationalites" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>

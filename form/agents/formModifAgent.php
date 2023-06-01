@@ -14,7 +14,7 @@
         <div class="col-12">
             <form action="../../index.php?uc=agent&action=valideModif" method="post">
                 <div class="form-group">
-                    <label for="titre">Nom</label>
+                    <label for="nom">Nom</label>
                     <input type="text" name="nom" id="nom" placeholder="Modifier le nom'" class="form-control mb-2" value="<?php echo $agent->nom; ?>">
                 </div>
 

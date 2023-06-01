@@ -30,6 +30,10 @@ switch ($userCase) {
         include 'controllers/agentController.php';
         break;
 
+    case 'nationalite':
+        include 'controllers/nationaliteController.php';
+        break;
+
     default:
         include 'views/404/404.php';
         break;

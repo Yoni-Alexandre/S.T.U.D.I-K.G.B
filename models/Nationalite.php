@@ -40,6 +40,49 @@ class Nationalite
         return $nationalites;
     }
 
+    public static function findById(int $id) : Nationalite
+    {
+        $req = \MonPdo::getInstance()->prepare("SELECT * FROM nationalites WHERE id = :id");
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Nationalite::class);
+        $req->bindParam(":id", $id);
+        $req->execute();
+        $nationalite = $req->fetch();
+        return $nationalite;
+    }
+
+    public static function add() : string
+    {
+        $nationalite = $_POST['nationalite'];
+        $req = \MonPdo::getInstance()->prepare('INSERT INTO nationalites (pays) VALUES (:nationalite)');
+        $req->bindParam(':nationalite', $nationalite);
+        $req->execute();
+        return $nationalite;
+    }
+
+    public static function update(Nationalite $nationalite) : string
+    {
+        $id = $_POST['id'];
+        $nationalite = $_POST['nationalite'];
+        $req = \MonPdo::getInstance()->prepare('UPDATE nationalites SET pays = :nationalite WHERE id = :id');
+        $req->bindParam(':id', $id);
+        $req->bindParam(':nationalite', $nationalite);
+        $req->execute();
+        return $nationalite;
+    }
+
+    public static function delete(int $id): int
+    {
+        $req = \MonPdo::getInstance()->prepare("DELETE FROM nationalites WHERE id = :id");
+        $req->bindParam(':id', $id);
+        $req->execute();
+        return $id;
+    }
+
+
+
+
+
+
 
 
 }
