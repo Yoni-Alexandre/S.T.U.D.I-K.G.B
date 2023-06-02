@@ -2,8 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>S.T.U.D.I | K.G.B</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -19,20 +18,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active title-studi-kgb" aria-current="page" href="../index.php">Accueil</a>
-                    </li>
+                <a class="nav-link active title-studi-kgb" aria-current="page" href="../index.php">Accueil</a>
 
-                    <li class="nav-item">
+                <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['user'])) { ?>
-                        <a class="nav-link title-studi-kgb" href="../index.php?uc=administration&action=logout">Déconnexion</a>
+                        <li class="nav-item">
+                            <a class="nav-link title-studi-kgb" href="../index.php?uc=administration&action=adminConsole">Administration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link title-studi-kgb" href="../index.php?uc=administration&action=logout">Déconnexion</a>
+                        </li>
                     <?php } else { ?>
-                        <a class="nav-link title-studi-kgb" href="../index.php?uc=administration&action=login">Connexion</a>
+                        <li class="nav-item">
+                            <a class="nav-link title-studi-kgb" href="../index.php?uc=administration&action=login">Connexion</a>
+                        </li>
                     <?php } ?>
-                    </li>
-
                 </ul>
+
             </div>
         </div>
     </nav>

@@ -3,7 +3,6 @@
 namespace controllers;
 
 use models\Administrateur;
-use mysqli;
 
 $action = $_GET['action'];
 
@@ -24,10 +23,10 @@ switch ($action) {
     case 'test':
         session_destroy();
         include('views/administration/logout.php');
+
         break;
 
-        case 'connexion':
-            Administrateur::login($_POST['username'], $_POST['password']);
-
-            break;
+    case 'connexion':
+        Administrateur::login($_POST['username'], $_POST['password']);
+        break;
 }

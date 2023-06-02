@@ -9,5 +9,5 @@ $_SESSION = array();
 session_destroy();
 
 // Redirection vers la page de login
-include('form/administrations/formLogin.php');
+header('Location: ../../index.php?uc=administration&action=login');
 exit;

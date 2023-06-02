@@ -39,9 +39,9 @@ switch ($userCase) {
         include 'controllers/specialiteController.php';
         break;
 
-        case 'login':
-        include 'controllers/loginController.php';
-        break;
+//    case 'login':
+//        include 'controllers/loginController.php';
+//        break;
 
     default:
         include 'views/404/404.php';

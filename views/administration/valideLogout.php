@@ -1,6 +1,6 @@
 <body>
-<div class="container">
-    <div class="row">
+<div class="container" style="height: 78vh;">
+    <div class="row mt-5">
         <div class="col-12 col-md-6 offset-md-3">
             <h2 class="text-center">Déconnexion</h2>
             <p class="text-center">Êtes-vous sûr de vouloir vous déconnecter ?</p>

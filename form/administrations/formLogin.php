@@ -13,8 +13,6 @@
                 <button type="submit" class="btn btn-primary mt-3">Se connecter</button>
             </div>
         </form>
-
-        <p class="text-center">Se déconnecter ? <a href="../../index.php?uc=administration&action=logout">Cliquez ici</a>.</p>
     </div>
 </div>
 
