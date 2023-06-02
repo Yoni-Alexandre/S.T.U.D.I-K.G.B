@@ -22,6 +22,16 @@ class Administrateur
     }
 
     /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
+
+    /**
      * @return string
      */
     public function getNom(): string
@@ -99,6 +109,26 @@ class Administrateur
     public function setDateCreation(Date $date_creation): void
     {
         $this->date_creation = $date_creation;
+    }
+
+    public static function login(string $username, string $password): ?Administrateur
+    {
+        $administrateur = null;
+        $pdo = \MonPdo::getInstance();
+        $sql = "SELECT * FROM administrateurs WHERE adresse_mail = :username AND mot_de_passe = :password";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['username' => $username, 'password' => $password]);
+        $row = $stmt->fetch();
+        if ($row) {
+            $administrateur = new Administrateur();
+            $administrateur->setId($row['id']);
+            $administrateur->setNom($row['nom']);
+            $administrateur->setPrenom($row['prenom']);
+            $administrateur->setAdresseEmail($row['adresse_email']);
+            $administrateur->setMotDePasse($row['mot_de_passe']);
+            $administrateur->setDateCreation($row['date_creation']);
+        }
+        return $administrateur;
     }
 
 

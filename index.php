@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+//session_start();
 include 'models/Administrateur.php';
 include 'models/Agent.php';
 include 'models/Cible.php';
@@ -19,7 +20,8 @@ switch ($userCase) {
         break;
 
     case 'administration':
-        include 'views/administration/administration.php';
+//        include 'views/administration/administration.php';
+        include 'controllers/loginController.php';
         break;
 
     case 'mission':
@@ -36,6 +38,10 @@ switch ($userCase) {
 
     case 'specialite':
         include 'controllers/specialiteController.php';
+        break;
+
+        case 'login':
+        include 'controllers/loginController.php';
         break;
 
     default:
