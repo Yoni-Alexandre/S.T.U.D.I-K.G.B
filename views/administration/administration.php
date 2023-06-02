@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="specialites.php">
+                        <a class="nav-link" href="../../index.php?uc=specialite&action=listeSpecialites">
                             <span data-feather="settings"></span>
                             <i class="fa fa-binoculars" aria-hidden="true"></i> Spécialités
                         </a>
@@ -62,7 +62,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Spécialités</h5>
                             <p class="card-text">Gérez les spécialités.</p>
-                            <a href="specialites.php" class="btn btn-primary">Accéder</a>
+                            <a href="../../index.php?uc=specialite&action=listeSpecialites" class="btn btn-primary">Accéder</a>
                         </div>
                     </div>
                 </div>
