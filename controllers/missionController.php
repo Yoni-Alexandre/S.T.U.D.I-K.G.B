@@ -12,11 +12,42 @@ use PDO;
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
+
 //PAGINATION DEBUT
     case 'listeMissions':
-        $missions = Mission::findAll();
+        $pageCourante = 1;
+        $nbMissionsParPage = 5;
+        $missions = Mission::findPage($pageCourante, $nbMissionsParPage);
+        $nbPages = Mission::getNbPages($nbMissionsParPage);
         include('views/missions/missions.php');
         break;
+
+    case 'liste':
+        $pageCourante = $_GET['page'];
+        $nbMissionsParPage = 5;
+        $missions = Mission::findPage($pageCourante, $nbMissionsParPage);
+        $nbPages = Mission::getNbPages($nbMissionsParPage);
+        include('views/missions/missions.php');
+        break;
+
+    case 'page':
+        $pageCourante = $_GET['page'];
+        $missions = Mission::findPage($pageCourante, 5);
+        include('views/missions/missions.php');
+        break;
+
+    case 'precedent':
+        $pageCourante = $_GET['page'];
+        $missions = Mission::findPage($pageCourante, -1);
+        include('views/missions/missions.php');
+        break;
+
+    case 'suivant':
+        $pageCourante = $_GET['page'];
+        $missions = Mission::findPage($pageCourante, 1);
+        include('views/missions/missions.php');
+        break;
+//PAGINATION FIN
 
     case 'add':
         $specialites = Specialite::findAll();

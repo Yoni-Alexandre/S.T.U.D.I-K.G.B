@@ -328,4 +328,23 @@ class Mission
         $req->bindParam(':id', $id);
         $req->execute();
     }
+
+    public static function findPage(int $page, int $nbElements)
+    {
+        $req = \MonPdo::getInstance()->prepare("SELECT missions.*, agents.nom AS agent_nom, specialites.nom AS specialite_requise, contacts.nom AS contact_nom, cibles.nom AS cible_nom, planques.code AS planque_code FROM missions LEFT JOIN  agents ON missions.agent_id = agents.id LEFT JOIN  specialites ON missions.specialite_requise = specialites.id LEFT JOIN contacts ON missions.contact_id = contacts.id LEFT JOIN cibles ON missions.cible_id = cibles.id LEFT JOIN planques ON missions.planque_id = planques.id LIMIT :limit OFFSET :offset");
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        $req->bindValue(':limit', $nbElements, \PDO::PARAM_INT);
+        $req->bindValue(':offset', ($page - 1) * $nbElements, \PDO::PARAM_INT);
+        $req->execute();
+        $missions = $req->fetchAll();
+        return $missions;
+    }
+
+    public static function getNbPages(int $nbElements)
+    {
+        $req = \MonPdo::getInstance()->query("SELECT COUNT(*) FROM missions");
+        $nbMissions = $req->fetchColumn();
+        $nbPages = ceil($nbMissions / $nbElements);
+        return $nbPages;
+    }
 }

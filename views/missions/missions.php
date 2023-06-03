@@ -48,22 +48,23 @@
                         <td><?php echo $mission->date_debut; ?></td>
                         <td><?php echo $mission->date_fin; ?></td>
 
-                        <td><?php echo $mission->specialite_requise; ?></td>
-                        <td><?php  echo $mission->contact_id; ?></td>
-                        <td><?php echo $mission->cible_id; ?></td>
-                        <td><?php echo $mission->planque_id; ?></td>
+                        <td><?php echo $mission->agent_nom; ?></td>
+                        <td><?php  echo $mission->contact_nom; ?></td>
+                        <td><?php echo $mission->cible_nom; ?></td>
+                        <td><?php echo $mission->planque_code; ?></td>
 
                         <td>
                             <a href="../../index.php?uc=mission&action=update&id=<?php echo $mission->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                             <a href="../../index.php?uc=mission&action=delete&id=<?php echo $mission->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-
                         </td>
-
                     </tr>
                 <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
+    <?php include 'views/pagination/paginationMission.php'; ?>
 </div>
+</body>
+
 
