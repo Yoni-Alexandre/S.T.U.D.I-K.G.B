@@ -1,3 +1,4 @@
+<?php global$pageCourante, $nbPages; ?>
 <!-- PAGINATION -->
 <div class="row">
     <div class="col-12">

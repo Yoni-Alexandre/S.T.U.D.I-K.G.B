@@ -34,5 +34,7 @@
             </table>
         </div>
     </div>
+    <?php include 'views/pagination/paginationNationalite.php'; ?>
 </div>
+
 

@@ -1,4 +1,3 @@
-<?php global$pageCourante, $nbPages; ?>
 <body>
 <div class="container" style="height: 85vh;">
     <div class="row pt-3">
@@ -46,6 +45,6 @@
             </table>
         </div>
     </div>
-    <?php include 'views/pagination/pagination.php'; ?>
+    <?php include 'views/pagination/paginationAgent.php'; ?>
 </div>
 </body>

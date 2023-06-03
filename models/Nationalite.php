@@ -78,6 +78,25 @@ class Nationalite
         return $id;
     }
 
+    public static function findPage(int $page, int $nbElements)
+    {
+        $req = \MonPdo::getInstance()->prepare("SELECT * FROM nationalites LIMIT :limit OFFSET :offset");
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        $req->bindValue(':limit', $nbElements, \PDO::PARAM_INT);
+        $req->bindValue(':offset', ($page - 1) * $nbElements, \PDO::PARAM_INT);
+        $req->execute();
+        $agents = $req->fetchAll();
+        return $agents;
+    }
+
+    public static function getNbPages(int $nbElements)
+    {
+        $req = \MonPdo::getInstance()->query("SELECT COUNT(*) FROM nationalites");
+        $nbAgents = $req->fetchColumn();
+        $nbPages = ceil($nbAgents / $nbElements);
+        return $nbPages;
+    }
+
 
 
 

@@ -9,9 +9,40 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
 
     case 'listeNationalites':
-        $nationalites = Nationalite::findAll();
+        $pageCourante = 1;
+        $nbNationaliteParPage = 5;
+        $nationalites = Nationalite::findPage($pageCourante, $nbNationaliteParPage);
+        $nbPages = Nationalite::getNbPages($nbNationaliteParPage);
         include('views/nationalites/nationalites.php');
         break;
+
+//PAGINATION DEBUT
+    case 'liste':
+        $pageCourante = $_GET['page'];
+        $nbNationaliteParPage = 5;
+        $nationalites = Nationalite::findPage($pageCourante, $nbNationaliteParPage);
+        $nbPages = Nationalite::getNbPages($nbNationaliteParPage);
+        include('views/nationalites/nationalites.php');
+        break;
+
+    case 'page':
+        $pageCourante = $_GET['page'];
+        $nationalites = Nationalite::findPage($pageCourante, 5);
+        include('views/nationalites/nationalites.php');
+        break;
+
+    case 'precedent':
+        $pageCourante = $_GET['page'];
+        $nationalites = Nationalite::findPage($pageCourante, -1);
+        include('views/nationalites/nationalites.php');
+        break;
+
+    case 'suivant':
+        $pageCourante = $_GET['page'];
+        $nationalites = Nationalite::findPage($pageCourante, 1);
+        include('views/nationalites/nationalites.php');
+        break;
+//PAGINATION FIN
 
     case 'add':
         $nationalites = Nationalite::findAll();
