@@ -10,6 +10,7 @@ use PDO;
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 switch ($action) {
+    //PAGINATION DEBUT
     case 'listeAgents':
         $pageCourante = 1;
         $nbAgentsParPage = 5;
@@ -43,6 +44,7 @@ switch ($action) {
         $agents = Agent::findPage($pageCourante, 1);
         include('views/agents/agents.php');
         break;
+    //PAGINATION FIN
 
     case 'add':
         $nationalites = Nationalite::findAll();

@@ -33,8 +33,8 @@
                         <td><?php echo $agent->prenom; ?></td>
                         <td><?php echo $agent->date_naissance; ?></td>
                         <td><?php echo $agent->code_identification; ?></td>
-                        <td><?php echo $agent->nationalite_id; ?></td>
-                        <td><?php echo $agent->specialite_id; ?></td>
+                        <td><?php echo $agent->nationalite_pays; ?></td>
+                        <td><?php echo $agent->specialite_nom; ?></td>
                         <td>
                             <a href="../../index.php?uc=agent&action=update&id=<?php echo $agent->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                             <a href="../../index.php?uc=agent&action=delete&id=<?php echo $agent->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>

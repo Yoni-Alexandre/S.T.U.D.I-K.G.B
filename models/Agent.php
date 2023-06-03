@@ -183,7 +183,9 @@ class Agent
 
     public static function findPage(int $page, int $nbElements)
     {
-        $req = \MonPdo::getInstance()->prepare("SELECT * FROM agents LIMIT :limit OFFSET :offset");
+        $req = \MonPdo::getInstance()->prepare("SELECT agents.*, specialites.nom AS specialite_nom, nationalites.pays AS nationalite_pays FROM agents LEFT JOIN specialites ON agents.specialite_id = specialites.id LEFT JOIN nationalites ON agents.nationalite_id = nationalites.id LIMIT :limit OFFSET :offset");
+
+//        $req = \MonPdo::getInstance()->prepare("SELECT * FROM agents LIMIT :limit OFFSET :offset");
         $req->setFetchMode(\PDO::FETCH_OBJ);
         $req->bindValue(':limit', $nbElements, \PDO::PARAM_INT);
         $req->bindValue(':offset', ($page - 1) * $nbElements, \PDO::PARAM_INT);

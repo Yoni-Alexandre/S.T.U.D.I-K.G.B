@@ -7,11 +7,41 @@ use PDO;
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
-
+//PAGINATION DEBUT
     case 'listeSpecialites':
-        $specialites = Specialite::findAll();
+        $pageCourante = 1;
+        $nbspecialiteParPage = 8;
+        $specialites = Specialite::findPage($pageCourante, $nbspecialiteParPage);
+        $nbPages = Specialite::getNbPages($nbspecialiteParPage);
         include('views/specialites/specialites.php');
         break;
+
+    case 'liste':
+        $pageCourante = $_GET['page'];
+        $nbspecialiteParPage = 8;
+        $specialites = Specialite::findPage($pageCourante, $nbspecialiteParPage);
+        $nbPages = Specialite::getNbPages($nbspecialiteParPage);
+        include('views/specialites/specialites.php');
+        break;
+
+    case 'page':
+        $pageCourante = $_GET['page'];
+        $specialites = Specialite::findPage($pageCourante, 5);
+        include('views/specialites/specialites.php');
+        break;
+
+    case 'precedent':
+        $pageCourante = $_GET['page'];
+        $specialites = Specialite::findPage($pageCourante, -1);
+        include('views/specialites/specialites.php');
+        break;
+
+    case 'suivant':
+        $pageCourante = $_GET['page'];
+        $specialites = Specialite::findPage($pageCourante, 1);
+        include('views/specialites/specialites.php');
+        break;
+    //PAGINATION FIN
 
     case 'add':
         $Specialites = Specialite::findAll();

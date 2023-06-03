@@ -33,6 +33,7 @@
                 </tbody>
             </table>
         </div>
+        <?php include 'views/pagination/paginationSpecialite.php'; ?>
     </div>
 </div>
 

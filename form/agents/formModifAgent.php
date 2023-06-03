@@ -46,8 +46,8 @@
                     echo '</div>';
 
                     echo '<div class="form-group">';
-                    echo '<label for="specialite_requise">Spécialité requise</label>';
-                    echo '<select name="specialite_requise" id="specialite_requise" class="form-control mb-2">';
+                    echo '<label for="specialite_id">Spécialité requise</label>';
+                    echo '<select name="specialite_id" id="specialite_id" class="form-control mb-2">';
                     echo '<option value="">Sélectionnez une spécialité</option>';
                     foreach ($specialites as $specialite) {
                         echo '<option value="' . $specialite->id . '">' . $specialite->nom . '</option>';

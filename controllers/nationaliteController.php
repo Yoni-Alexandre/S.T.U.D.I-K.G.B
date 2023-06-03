@@ -8,18 +8,19 @@ use PDO;
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
 
+//PAGINATION DEBUT
     case 'listeNationalites':
         $pageCourante = 1;
-        $nbNationaliteParPage = 5;
+        $nbNationaliteParPage = 8;
         $nationalites = Nationalite::findPage($pageCourante, $nbNationaliteParPage);
         $nbPages = Nationalite::getNbPages($nbNationaliteParPage);
         include('views/nationalites/nationalites.php');
         break;
 
-//PAGINATION DEBUT
+
     case 'liste':
         $pageCourante = $_GET['page'];
-        $nbNationaliteParPage = 5;
+        $nbNationaliteParPage = 8;
         $nationalites = Nationalite::findPage($pageCourante, $nbNationaliteParPage);
         $nbPages = Nationalite::getNbPages($nbNationaliteParPage);
         include('views/nationalites/nationalites.php');
