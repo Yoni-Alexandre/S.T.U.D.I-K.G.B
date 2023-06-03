@@ -5,7 +5,7 @@ namespace controllers;
 use models\Nationalite;
 use PDO;
 
-$action = $_GET['action'];
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
 
     case 'listeNationalites':
@@ -43,6 +43,10 @@ switch ($action) {
         $id = $_GET['id'];
         $mission = Nationalite::delete($id);
         include 'views/nationalites/nationaliteSuppr.php';
+        break;
+
+    default:
+        include 'views/404/404.php';
         break;
 }
 

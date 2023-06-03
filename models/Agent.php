@@ -180,4 +180,25 @@ class Agent
         $req->bindParam(':id', $id);
         $req->execute();
     }
+
+    public static function findPage(int $page, int $nbElements)
+    {
+        $req = \MonPdo::getInstance()->prepare("SELECT * FROM agents LIMIT :limit OFFSET :offset");
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        $req->bindValue(':limit', $nbElements, \PDO::PARAM_INT);
+        $req->bindValue(':offset', ($page - 1) * $nbElements, \PDO::PARAM_INT);
+        $req->execute();
+        $agents = $req->fetchAll();
+        return $agents;
+    }
+
+    public static function getNbPages(int $nbElements): int
+    {
+        $req = \MonPdo::getInstance()->prepare("SELECT COUNT(*) AS total FROM agents");
+        $req->execute();
+        $result = $req->fetch();
+        $total = $result['total'];
+        $nbPages = ceil($total / $nbElements);
+        return $nbPages;
+    }
 }

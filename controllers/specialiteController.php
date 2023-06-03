@@ -5,7 +5,7 @@ namespace controllers;
 use models\Specialite;
 use PDO;
 
-$action = $_GET['action'];
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
 
     case 'listeSpecialites':
@@ -43,6 +43,10 @@ switch ($action) {
         $id = $_GET['id'];
         $mission = Specialite::delete($id);
         include 'views/Specialites/specialiteSuppr.php';
+        break;
+
+    default:
+        include 'views/404/404.php';
         break;
 }
 

@@ -4,7 +4,7 @@ namespace controllers;
 
 use models\Administrateur;
 
-$action = $_GET['action'];
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 
 switch ($action) {
 
@@ -28,5 +28,9 @@ switch ($action) {
 
     case 'connexion':
         Administrateur::login($_POST['username'], $_POST['password']);
+        break;
+
+    default:
+        include 'views/404/404.php';
         break;
 }

@@ -8,11 +8,44 @@ use models\Nationalite;
 use models\Specialite;
 use PDO;
 
-$action = $_GET['action'];
-switch ($action) {
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 
+switch ($action) {
     case 'listeAgents':
-        $agents = Agent::findAll();
+        $pageCourante = 1;
+        $nbAgentsParPage = 5;
+        $agents = Agent::findPage($pageCourante, $nbAgentsParPage);
+        $nbPages = Agent::getNbPages($nbAgentsParPage);
+//        $agents = Agent::findAll();
+        $nbPages = 10;
+        include('views/agents/agents.php');
+        break;
+
+    case 'liste':
+        $pageCourante = $_GET['page'];
+        $nbAgentsParPage = 5;
+        $agents = Agent::findPage($pageCourante, $nbAgentsParPage);
+        $nbPages = Agent::getNbPages($nbAgentsParPage);
+//        $agents = Agent::findAll();
+        $nbPages = 10;
+        include('views/agents/agents.php');
+        break;
+
+    case 'page':
+        $pageCourante = $_GET['page'];
+        $agents = Agent::findPage($pageCourante, 5);
+        include('views/agents/agents.php');
+        break;
+
+    case 'precedent':
+        $pageCourante = $_GET['page'];
+        $agents = Agent::findPage($pageCourante, -1);
+        include('views/agents/agents.php');
+        break;
+
+    case 'suivant':
+        $pageCourante = $_GET['page'];
+        $agents = Agent::findPage($pageCourante, 1);
         include('views/agents/agents.php');
         break;
 

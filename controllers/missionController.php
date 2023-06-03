@@ -10,7 +10,7 @@ use models\Planque;
 use models\Specialite;
 use PDO;
 
-$action = $_GET['action'];
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 switch ($action) {
 
     case 'listeMissions':
@@ -59,6 +59,10 @@ switch ($action) {
         $id = $_GET['id'];
         $mission = Mission::delete($id);
         include 'views/missions/missionSuppr.php';
+        break;
+
+    default:
+        include 'views/404/404.php';
         break;
 
     default:
