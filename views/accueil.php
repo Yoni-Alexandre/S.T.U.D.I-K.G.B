@@ -5,7 +5,9 @@
             <img src="../assets/images/Emblema_del_KGB.png" class="img-fluid" alt="Logo" style="max-width: 200px; height: auto;">
             <h1 class="mt-4">s.t.u.d.i | k.g.b</h1>
             <h2 class="mt-4"><a href="../index.php?uc=mission&action=listeMissions" class="btn btn-primary">Consultez la liste des Missions (public)</a></h2>
-            <h2><a href="../index.php?uc=administration&action=login" class="btn btn-primary">Administration (privée)</a></h2>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <h2><a href="../index.php?uc=mission&action=listeMissions" class="btn btn-primary">Administration (privée)</a></h2>
+            <?php } ?>
         </div>
     </div>
 </main>
