@@ -192,13 +192,11 @@ class Agent
         return $agents;
     }
 
-    public static function getNbPages(int $nbElements): int
+    public static function getNbPages(int $nbElements)
     {
-        $req = \MonPdo::getInstance()->prepare("SELECT COUNT(*) AS total FROM agents");
-        $req->execute();
-        $result = $req->fetch();
-        $total = $result['total'];
-        $nbPages = ceil($total / $nbElements);
+        $req = \MonPdo::getInstance()->query("SELECT COUNT(*) FROM agents");
+        $nbAgents = $req->fetchColumn();
+        $nbPages = ceil($nbAgents / $nbElements);
         return $nbPages;
     }
 }

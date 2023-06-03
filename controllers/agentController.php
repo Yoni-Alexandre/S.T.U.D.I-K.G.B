@@ -3,7 +3,6 @@
 namespace controllers;
 
 use models\Agent;
-use models\Mission;
 use models\Nationalite;
 use models\Specialite;
 use PDO;
@@ -16,8 +15,6 @@ switch ($action) {
         $nbAgentsParPage = 5;
         $agents = Agent::findPage($pageCourante, $nbAgentsParPage);
         $nbPages = Agent::getNbPages($nbAgentsParPage);
-//        $agents = Agent::findAll();
-        $nbPages = 10;
         include('views/agents/agents.php');
         break;
 
@@ -26,8 +23,6 @@ switch ($action) {
         $nbAgentsParPage = 5;
         $agents = Agent::findPage($pageCourante, $nbAgentsParPage);
         $nbPages = Agent::getNbPages($nbAgentsParPage);
-//        $agents = Agent::findAll();
-        $nbPages = 10;
         include('views/agents/agents.php');
         break;
 
