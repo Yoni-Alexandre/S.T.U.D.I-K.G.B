@@ -16,7 +16,7 @@ switch ($action) {
 //PAGINATION DEBUT
     case 'listeMissions':
         $pageCourante = 1;
-        $nbMissionsParPage = 5;
+        $nbMissionsParPage = 3;
         $missions = Mission::findPage($pageCourante, $nbMissionsParPage);
         $nbPages = Mission::getNbPages($nbMissionsParPage);
         include('views/missions/missions.php');
@@ -24,7 +24,7 @@ switch ($action) {
 
     case 'liste':
         $pageCourante = $_GET['page'];
-        $nbMissionsParPage = 5;
+        $nbMissionsParPage = 3;
         $missions = Mission::findPage($pageCourante, $nbMissionsParPage);
         $nbPages = Mission::getNbPages($nbMissionsParPage);
         include('views/missions/missions.php');
