@@ -176,9 +176,16 @@ class Agent
     public static function delete(): void
     {
         $id = $_GET['id'];
-        $req = \MonPdo::getInstance()->prepare("DELETE FROM agents WHERE id = :id");
-        $req->bindParam(':id', $id);
-        $req->execute();
+
+        // Supprimer les missions liées à l'agent
+        $reqMissions = \MonPdo::getInstance()->prepare("DELETE FROM missions WHERE agent_id = :id");
+        $reqMissions->bindParam(':id', $id, \PDO::PARAM_INT);
+        $reqMissions->execute();
+
+        // Supprimer l'agent lui-même
+        $reqAgent = \MonPdo::getInstance()->prepare("DELETE FROM agents WHERE id = :id");
+        $reqAgent->bindParam(':id', $id, \PDO::PARAM_INT);
+        $reqAgent->execute();
     }
 
     public static function findPage(int $page, int $nbElements)

@@ -72,11 +72,31 @@ class Nationalite
 
     public static function delete(int $id): int
     {
-        $req = \MonPdo::getInstance()->prepare("DELETE FROM nationalites WHERE id = :id");
-        $req->bindParam(':id', $id);
-        $req->execute();
+        // Supprimer les missions liées aux agents de la nationalité
+        $reqMissions = \MonPdo::getInstance()->prepare("DELETE FROM missions WHERE agent_id IN (SELECT id FROM agents WHERE nationalite_id = :id)");
+        $reqMissions->bindParam(':id', $id);
+        $reqMissions->execute();
+
+        // Supprimer les agents liés à la nationalité
+        $reqAgents = \MonPdo::getInstance()->prepare("DELETE FROM agents WHERE nationalite_id = :id");
+        $reqAgents->bindParam(':id', $id);
+        $reqAgents->execute();
+
+        // Supprimer les cibles liées à la nationalité
+        $reqCibles = \MonPdo::getInstance()->prepare("DELETE FROM cibles WHERE nationalite_id = :id");
+        $reqCibles->bindParam(':id', $id);
+        $reqCibles->execute();
+
+        // Supprimer la nationalité
+        $reqNationalite = \MonPdo::getInstance()->prepare("DELETE FROM nationalites WHERE id = :id");
+        $reqNationalite->bindParam(':id', $id);
+        $reqNationalite->execute();
+
         return $id;
     }
+
+
+
 
     public static function findPage(int $page, int $nbElements)
     {

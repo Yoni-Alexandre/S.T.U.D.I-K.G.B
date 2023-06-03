@@ -81,15 +81,15 @@ class Specialite
 
     public static function delete(int $id): int
     {
-        // Supprimer les agents liés à la spécialité
-        $reqAgents = \MonPdo::getInstance()->prepare("DELETE FROM agents WHERE specialite_id = :id");
-        $reqAgents->bindParam(':id', $id);
-        $reqAgents->execute();
-
         // Supprimer les missions liées à la spécialité
         $reqMissions = \MonPdo::getInstance()->prepare("DELETE FROM missions WHERE specialite_requise = :id");
         $reqMissions->bindParam(':id', $id);
         $reqMissions->execute();
+
+        // Supprimer les agents liés à la spécialité
+        $reqAgents = \MonPdo::getInstance()->prepare("DELETE FROM agents WHERE specialite_id = :id");
+        $reqAgents->bindParam(':id', $id);
+        $reqAgents->execute();
 
         // Supprimer la spécialité
         $reqSpecialite = \MonPdo::getInstance()->prepare("DELETE FROM specialites WHERE id = :id");
@@ -98,6 +98,7 @@ class Specialite
 
         return $id;
     }
+
 
 
     public static function findPage(int $page, int $nbElements)
