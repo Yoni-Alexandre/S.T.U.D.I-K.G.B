@@ -31,7 +31,9 @@
                     <th scope="col">Contact</th>
                     <th scope="col">Cible</th>
                     <th scope="col">Planque</th>
-                    <th scope="col">Action</th>
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <th scope="col">Action</th>
+                    <?php } ?>
 
                 </tr>
                 </thead>
@@ -54,8 +56,10 @@
                         <td><?php echo $mission->planque_code; ?></td>
 
                         <td>
-                            <a href="../../index.php?uc=mission&action=update&id=<?php echo $mission->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                            <a href="../../index.php?uc=mission&action=delete&id=<?php echo $mission->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <?php if (isset($_SESSION['user'])) { ?>
+                                <a href="../../index.php?uc=mission&action=update&id=<?php echo $mission->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                <a href="../../index.php?uc=mission&action=delete&id=<?php echo $mission->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>
