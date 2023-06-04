@@ -37,7 +37,7 @@
                         <td><?php echo $agent->specialite_nom; ?></td>
                         <td>
                             <a href="../../index.php?uc=agent&action=update&id=<?php echo $agent->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                            <a href="../../index.php?uc=agent&action=delete&id=<?php echo $agent->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#supprModal' data-suppression='index.php?uc=agent&action=delete&id=<?php echo $agent->id ?>'><i class='fas fa-trash'></i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -45,6 +45,7 @@
             </table>
         </div>
     </div>
+    <?php include 'views/modal/modal.php'; ?>
     <?php include 'views/pagination/paginationAgent.php'; ?>
 </div>
 </body>

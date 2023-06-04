@@ -58,7 +58,7 @@
                         <td>
                             <?php if (isset($_SESSION['user'])) { ?>
                                 <a href="../../index.php?uc=mission&action=update&id=<?php echo $mission->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                <a href="../../index.php?uc=mission&action=delete&id=<?php echo $mission->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#supprModal' data-suppression='index.php?uc=mission&action=delete&id=<?php echo $mission->id ?>'><i class='fas fa-trash'></i></a>
                             <?php } ?>
                         </td>
                     </tr>
@@ -67,6 +67,7 @@
             </table>
         </div>
     </div>
+    <?php include 'views/modal/modal.php'; ?>
     <?php include 'views/pagination/paginationMission.php'; ?>
 </div>
 </body>

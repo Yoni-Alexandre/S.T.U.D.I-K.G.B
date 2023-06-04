@@ -26,7 +26,7 @@
                         <td><?php echo $nationalite->pays; ?></td>
                         <td>
                             <a href="../../index.php?uc=nationalite&action=update&id=<?php echo $nationalite->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                            <a href="../../index.php?uc=nationalite&action=delete&id=<?php echo $nationalite->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#supprModal' data-suppression='../../index.php?uc=nationalite&action=delete&id=<?php echo $nationalite->id ?>'><i class='fas fa-trash'></i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -34,6 +34,7 @@
             </table>
         </div>
     </div>
+    <?php include 'views/modal/modal.php'; ?>
     <?php include 'views/pagination/paginationNationalite.php'; ?>
 </div>
 

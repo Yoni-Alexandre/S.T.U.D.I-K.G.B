@@ -26,13 +26,14 @@
                         <td><?php echo $specialite->nom; ?></td>
                         <td>
                             <a href="../../index.php?uc=specialite&action=update&id=<?php echo $specialite->id; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                            <a href="../../index.php?uc=specialite&action=delete&id=<?php echo $specialite->id; ?>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#supprModal' data-suppression='index.php?uc=specialite&action=delete&id=<?php echo $specialite->id ?>'><i class='fas fa-trash'></i></a>
                         </td>
                     </tr>
                 <?php } ?>
                 </tbody>
             </table>
         </div>
+        <?php include 'views/modal/modal.php'; ?>
         <?php include 'views/pagination/paginationSpecialite.php'; ?>
     </div>
 </div>

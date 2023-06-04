@@ -1,5 +1,5 @@
 <!-- Modal de confirmation de suppression -->
-<div class="modal fade" id="missionSupprModal" tabindex="-1" aria-labelledby="missionSupprModalLabel" aria-hidden="true">
+<div class="modal fade" id="supprModal" tabindex="-1" aria-labelledby="supprModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,3 +17,4 @@
         </div>
     </div>
 </div>
+<script src="../../assets/js/studi-kgb.js"></script>
