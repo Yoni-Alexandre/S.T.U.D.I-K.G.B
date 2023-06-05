@@ -21,7 +21,6 @@ class Mission
     private int $cible_id;
     private int $planque_id;
 
-
     /**
      * @return int
      */
@@ -347,4 +346,15 @@ class Mission
         $nbPages = ceil($nbMissions / $nbElements);
         return $nbPages;
     }
+
+    public static function search(string $keyword)
+    {
+        $req = \MonPdo::getInstance()->prepare("SELECT * FROM missions WHERE titre LIKE :keyword OR description LIKE :keyword OR nom_code LIKE :keyword OR pays LIKE :keyword OR type_mission LIKE :keyword OR statut LIKE :keyword");
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        $req->bindValue(':keyword', "%$keyword%");
+        $req->execute();
+        $missions = $req->fetchAll();
+        return $missions;
+    }
+
 }

@@ -92,6 +92,27 @@ switch ($action) {
         include 'views/missions/missionSuppr.php';
         break;
 
+    case 'search':
+        if(isset($_POST['search'])) {
+            $keyword = $_POST['search'];
+            $missions = Mission::search($keyword);
+        } else {
+            $missions = Mission::findAll();
+        }
+        include 'views/missions/missionRecherche.php';
+        break;
+
+        case 'detail':
+            $id = $_GET['id'];
+            $req = \MonPdo::getInstance()->prepare("SELECT * FROM missions WHERE id = :id");
+            $req->setFetchMode(PDO::FETCH_OBJ);
+            $req->bindParam(':id', $id);
+            $req->execute();
+            $mission = $req->fetch();
+            include 'views/missions/detailMission.php';
+            break;
+
+
     default:
         include 'views/404/404.php';
         break;

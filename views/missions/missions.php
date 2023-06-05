@@ -13,6 +13,20 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12">
+            <form class="form-inline" method="POST" action="../../index.php?uc=mission&action=search">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" placeholder="Rechercher...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Rechercher</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <table class="table table-hover table-striped mt-5 text-center">

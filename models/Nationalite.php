@@ -72,30 +72,33 @@ class Nationalite
 
     public static function delete(int $id): int
     {
-        // Supprimer les missions liées aux agents de la nationalité
-        $reqMissions = \MonPdo::getInstance()->prepare("DELETE FROM missions WHERE agent_id IN (SELECT id FROM agents WHERE nationalite_id = :id)");
+        // Mise à jour des missions liées aux agents de la nationalité
+        $reqMissions = \MonPdo::getInstance()->prepare("UPDATE missions SET agent_id = NULL WHERE agent_id IN (SELECT id FROM agents WHERE nationalite_id = :id)");
         $reqMissions->bindParam(':id', $id);
         $reqMissions->execute();
 
-        // Supprimer les agents liés à la nationalité
-        $reqAgents = \MonPdo::getInstance()->prepare("DELETE FROM agents WHERE nationalite_id = :id");
+        // Mise à jour des agents liés à la nationalité
+        $reqAgents = \MonPdo::getInstance()->prepare("UPDATE agents SET nationalite_id = NULL WHERE nationalite_id = :id");
         $reqAgents->bindParam(':id', $id);
         $reqAgents->execute();
 
-        // Supprimer les cibles liées à la nationalité
-        $reqCibles = \MonPdo::getInstance()->prepare("DELETE FROM cibles WHERE nationalite_id = :id");
+        // Mise à jour des cibles liées à la nationalité
+        $reqCibles = \MonPdo::getInstance()->prepare("UPDATE cibles SET nationalite_id = NULL WHERE nationalite_id = :id");
         $reqCibles->bindParam(':id', $id);
         $reqCibles->execute();
 
-        // Supprimer la nationalité
+        // Mise à jour des contacts liés à la nationalité
+        $reqContacts = \MonPdo::getInstance()->prepare("UPDATE contacts SET nationalite_id = NULL WHERE nationalite_id = :id");
+        $reqContacts->bindParam(':id', $id);
+        $reqContacts->execute();
+
+        // Suppression de la nationalité
         $reqNationalite = \MonPdo::getInstance()->prepare("DELETE FROM nationalites WHERE id = :id");
         $reqNationalite->bindParam(':id', $id);
         $reqNationalite->execute();
 
         return $id;
     }
-
-
 
 
     public static function findPage(int $page, int $nbElements)
