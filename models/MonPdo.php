@@ -1,11 +1,10 @@
 <?php
-
 class MonPdo
     {
-        private static $serveur='r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com';
-        private static $bdd='h35nxt9xlbc9em2v';
-        private static $user='xxmk9gx4y3bsjlh4' ;
-        private static $mdp='h00sslwd113os26g' ;
+        private static $serveur='mysql:host=localhost';
+        private static $bdd='dbname=studi_kgb';
+        private static $user='root' ;
+        private static $mdp='' ;
         private static $monPdo;
         private static $unPdo = null;
 
