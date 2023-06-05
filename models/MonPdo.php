@@ -1,20 +1,14 @@
 <?php
-/**
-*	Classe d'acces aux donnees Utilise les services de la classe PDO
-*	Les attributs sont tous statiques, les 4 premiers pour la connexion
-*	$monPdo qui contiendra l'unique instance de la classe
-*/
+
 class MonPdo
     {
-        private static $serveur='mysql:host=localhost';
-        private static $bdd='dbname=studi_kgb';
-        private static $user='root' ;
-        private static $mdp='' ;
+        private static $serveur='r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com';
+        private static $bdd='h35nxt9xlbc9em2v';
+        private static $user='xxmk9gx4y3bsjlh4' ;
+        private static $mdp='h00sslwd113os26g' ;
         private static $monPdo;
         private static $unPdo = null;
 
-        //	Constructeur privé, crée l'instance de PDO qui sera sollicitée
-        //	pour toutes les méthodes de la classe
         private function __construct()
         {
             MonPdo::$unPdo = new PDO(MonPdo::$serveur.';'.MonPdo::$bdd, MonPdo::$user, MonPdo::$mdp);
@@ -25,11 +19,7 @@ class MonPdo
         {
             MonPdo::$unPdo = null;
         }
-        /**
-        *	Fonction statique qui cree l'unique instance de la classe
-        * Appel : $instanceMonPdo = MonPdo::getMonPdo();
-        *	@return l'unique objet de la classe MonPdo
-        */
+
         public static function getInstance()
         {
             if(self::$unPdo == null)
